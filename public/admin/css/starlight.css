@@ -12374,10 +12374,12 @@ textarea.parsley-success:focus {
 
 .sl-pagebody {
   padding: 20px;
+  color:#111111;
 }
 @media (min-width: 576px) {
   .sl-pagebody {
     padding: 25px;
+    color:#111111;
   }
 }
 

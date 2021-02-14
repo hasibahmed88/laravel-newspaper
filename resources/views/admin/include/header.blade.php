@@ -25,8 +25,8 @@
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
       <ul class="sl-menu-sub nav flex-column">
-        <li class="nav-item"><a href="chart-morris.html" class="nav-link"><i class="icon ion-gear-a"></i> Manage Category</a></li>
-        <li class="nav-item"><a href="chart-morris.html" class="nav-link"><i class="icon ion-trash-a"></i> Trash</a></li>
+        <li class="nav-item"><a href="{{ route('manage-category') }}" class="nav-link"><i class="icon ion-gear-a"></i> Manage Category</a></li>
+        <li class="nav-item"><a href="{{ route('trash-category') }}" class="nav-link"><i class="icon ion-trash-a"></i> Trash</a></li>
       </ul>
       <a href="#" class="sl-menu-link">
         <div class="sl-menu-item">
@@ -119,30 +119,31 @@
     <div class="sl-header-right">
       <nav class="nav">
         <div class="dropdown">
-          <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
+          <a href="" class="nav-link nav-link-profile" data-toggle="dropdown"> <i class="icon ion-person">&nbsp;</i>
             <span class="logged-name">Jane<span class="hidden-md-down"> Doe</span></span>
             <img src="../img/img3.jpg" class="wd-32 rounded-circle" alt="">
           </a>
-          <div class="dropdown-menu dropdown-menu-header wd-200">
+          <div class="dropdown-menu dropdown-menu-header wd-200 shadow rounded mr-1">
             <ul class="list-unstyled user-profile-nav">
               <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
               <li><a href=""><i class="icon ion-ios-gear-outline"></i> Settings</a></li>
-              <li><a href=""><i class="icon ion-ios-download-outline"></i> Downloads</a></li>
-              <li><a href=""><i class="icon ion-ios-star-outline"></i> Favorites</a></li>
-              <li><a href=""><i class="icon ion-ios-folder-outline"></i> Collections</a></li>
-              <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
+              <li>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                    <i class="icon ion-power"></i> {{ __('Logout') }}
+                </a>
+              </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
             </ul>
           </div><!-- dropdown-menu -->
         </div><!-- dropdown -->
       </nav>
-      <div class="navicon-right">
-        <a id="btnRightMenu" href="" class="pos-relative">
-          <i class="icon ion-ios-bell-outline"></i>
-          <!-- start: if statement -->
-          <span class="square-8 bg-danger"></span>
-          <!-- end: if statement -->
-        </a>
-      </div><!-- navicon-right -->
+      
     </div><!-- sl-header-right -->
   </div><!-- sl-header -->
   <!-- ########## END: HEAD PANEL ########## -->
+
+  
