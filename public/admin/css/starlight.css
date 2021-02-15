@@ -71,7 +71,7 @@
   h3 {
     page-break-after: avoid;
   }
-
+  
   .navbar {
     display: none;
   }
@@ -123,7 +123,7 @@ body {
   font-weight: normal;
   line-height: 1.5;
   color: #868ba1;
-  background-color: #D8DCE3;
+  background-color: #f8f9fc;
 }
 
 [tabindex="-1"]:focus {
@@ -11998,7 +11998,9 @@ textarea.parsley-success:focus {
   right: -5px;
   border-radius: 100%;
 }
-
+.shadow{
+  box-shadow: 0px 2.4px 28px 0px rgba(58, 59, 69, 0.15)!important;
+}
 .sl-sideleft {
   position: fixed;
   top: 60px;

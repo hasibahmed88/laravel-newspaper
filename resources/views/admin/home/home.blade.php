@@ -8,7 +8,7 @@
 
 <div class="row row-sm">
   <div class="col-sm-6 col-xl-3">
-    <div class="card pd-20 bg-primary">
+    <div class="card pd-20 bg-primary shadow">
       <div class="d-flex justify-content-between align-items-center mg-b-10">
         <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">Today's Sales</h6>
         <a href="" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
@@ -30,7 +30,7 @@
     </div><!-- card -->
   </div><!-- col-3 -->
   <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
-    <div class="card pd-20 bg-info">
+    <div class="card pd-20 bg-info shadow">
       <div class="d-flex justify-content-between align-items-center mg-b-10">
         <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">This Week's Sales</h6>
         <a href="" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
@@ -52,7 +52,7 @@
     </div><!-- card -->
   </div><!-- col-3 -->
   <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
-    <div class="card pd-20 bg-purple">
+    <div class="card pd-20 bg-purple shadow">
       <div class="d-flex justify-content-between align-items-center mg-b-10">
         <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">This Month's Sales</h6>
         <a href="" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
@@ -74,7 +74,7 @@
     </div><!-- card -->
   </div><!-- col-3 -->
   <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
-    <div class="card pd-20 bg-sl-primary">
+    <div class="card pd-20 bg-sl-primary shadow">
       <div class="d-flex justify-content-between align-items-center mg-b-10">
         <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">This Year's Sales</h6>
         <a href="" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>

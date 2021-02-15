@@ -1,6 +1,6 @@
   <!-- ########## START: LEFT PANEL ########## -->
   <div class="sl-logo"><a href="{{ route('home') }}"><i class="icon ion-android-star-outline"></i> Newspaper</a></div>
-  <div class="sl-sideleft">
+  <div class="sl-sideleft shadow ">
     <div class="input-group input-group-search">
       <input type="search" name="search" class="form-control" placeholder="Search">
       <span class="input-group-btn">
@@ -17,9 +17,10 @@
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
       
+      {{-- Category --}}
       <a href="#" class="sl-menu-link">
         <div class="sl-menu-item">
-          <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+          <i class="menu-item-icon fa fa-server tx-20"></i>
           <span class="menu-item-label">Categories</span>
           <i class="menu-item-arrow fa fa-angle-down"></i>
         </div><!-- menu-item -->
@@ -28,6 +29,35 @@
         <li class="nav-item"><a href="{{ route('manage-category') }}" class="nav-link"><i class="icon ion-gear-a"></i> Manage Category</a></li>
         <li class="nav-item"><a href="{{ route('trash-category') }}" class="nav-link"><i class="icon ion-trash-a"></i> Trash</a></li>
       </ul>
+
+      {{-- Sub Category --}}
+      <a href="#" class="sl-menu-link">
+        <div class="sl-menu-item">
+          <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+          <span class="menu-item-label">Sub Categories</span>
+          <i class="menu-item-arrow fa fa-angle-down"></i>
+        </div><!-- menu-item -->
+      </a><!-- sl-menu-link -->
+      <ul class="sl-menu-sub nav flex-column">
+        <li class="nav-item"><a href="{{ route('manage-subcategory') }}" class="nav-link"><i class="icon ion-gear-a"></i> Manage Sub category</a></li>
+        <li class="nav-item"><a href="{{ route('trash-subcategory') }}" class="nav-link"><i class="icon ion-trash-a"></i> Trash</a></li>
+      </ul>
+
+       {{-- News --}}
+       <a href="#" class="sl-menu-link">
+        <div class="sl-menu-item">
+          <i class="menu-item-icon icon ion-clipboard tx-20"></i>
+          <span class="menu-item-label">News</span>
+          <i class="menu-item-arrow fa fa-angle-down"></i>
+        </div><!-- menu-item -->
+      </a><!-- sl-menu-link -->
+      <ul class="sl-menu-sub nav flex-column">
+      {{-- Sub Category --}}
+        <li class="nav-item"><a href="{{ route('add-news') }}" class="nav-link"><i class="fa fa-plus"></i> Add news</a></li>
+        <li class="nav-item"><a href="{{ route('manage-news') }}" class="nav-link"><i class="icon ion-gear-a"></i> Manage news</a></li>
+        <li class="nav-item"><a href="{{ route('trashed-news') }}" class="nav-link"><i class="icon ion-trash-a"></i> Trashed news</a></li>
+      </ul>
+
       <a href="#" class="sl-menu-link">
         <div class="sl-menu-item">
           <i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>
@@ -111,7 +141,7 @@
   <!-- ########## END: LEFT PANEL ########## -->
 
   <!-- ########## START: HEAD PANEL ########## -->
-  <div class="sl-header">
+  <div class="sl-header shadow">
     <div class="sl-header-left">
       <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
       <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
@@ -120,7 +150,7 @@
       <nav class="nav">
         <div class="dropdown">
           <a href="" class="nav-link nav-link-profile" data-toggle="dropdown"> <i class="icon ion-person">&nbsp;</i>
-            <span class="logged-name">Jane<span class="hidden-md-down"> Doe</span></span>
+            <span class="logged-name">{{ Auth::user()->name }}</span>
             <img src="../img/img3.jpg" class="wd-32 rounded-circle" alt="">
           </a>
           <div class="dropdown-menu dropdown-menu-header wd-200 shadow rounded mr-1">

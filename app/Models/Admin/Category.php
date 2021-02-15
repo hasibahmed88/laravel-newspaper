@@ -18,7 +18,8 @@ class Category extends Model
     ];
 
     // New Category 
-    public static function newCategoryInfo($request){
+    public static function newCategoryInfo($request)
+    {
         $category = new Category();
         $category->category_name            =   $request->category_name;
         $category->category_description     =   $request->category_description;
@@ -27,7 +28,8 @@ class Category extends Model
     }
 
     // Update Category 
-    public static function updateCategoryInfo($request){
+    public static function updateCategoryInfo($request)
+    {
         $category = Category::find($request->id);
         $category->category_name            =   $request->category_name;
         $category->category_description     =   $request->category_description;
@@ -36,12 +38,14 @@ class Category extends Model
     }
 
     // Publish & unpublish category
-    public static function publishCategoryInfo($id){
+    public static function publishCategoryInfo($id)
+    {
         $category = Category::find($id);
         $category->status = 1;
         $category->save();
     }
-    public static function unPublishCategoryInfo($id){
+    public static function unPublishCategoryInfo($id)
+    {
         $category = Category::find($id);
         $category->status = 0;
         $category->save();

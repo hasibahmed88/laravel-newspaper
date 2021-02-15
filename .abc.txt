@@ -7,8 +7,9 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('manage-category') }}">Manage Category</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Library</li>
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('manage-category') }}">Manage News</a></li>
+        <li class="breadcrumb-item active">Add News</li>
     </ol>
 </nav>
 

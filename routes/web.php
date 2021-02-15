@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,25 @@ Route::get('/category/trash-category', [App\Http\Controllers\Admin\CategoryContr
 Route::get('/category/restore-category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'restoreCategory'])->name('restore-category');
 Route::post('/category/permanent-delete-category/', [App\Http\Controllers\Admin\CategoryController::class, 'permanentDeleteCategory'])->name('permanent-delete-category');
 
+// ===== Sub Categories ========||
 
+Route::get('/category/manage-subcategory/', [App\Http\Controllers\Admin\SubCategoryController::class, 'manageSubcategory'])->name('manage-subcategory');
+Route::post('/category/new-subcategory/', [App\Http\Controllers\Admin\SubCategoryController::class, 'newSubcategory'])->name('new-subcategory');
+Route::get('/category/edit-subcategory/{id}', [App\Http\Controllers\Admin\SubCategoryController::class, 'editSubcategory'])->name('edit-subcategory');
+Route::post('/category/update-subcategory', [App\Http\Controllers\Admin\SubCategoryController::class, 'updateSubcategory'])->name('update-subcategory');
+// publish & unpublish
+Route::get('/category/unpublish-subcategory/{id}', [App\Http\Controllers\Admin\SubCategoryController::class, 'unpublishSubcategory'])->name('unpublish-subcategory');
+Route::get('/category/publish-subcategory/{id}', [App\Http\Controllers\Admin\SubCategoryController::class, 'publishSubcategory'])->name('publish-subcategory');
+Route::post('/category/delete-subcategory', [App\Http\Controllers\Admin\SubCategoryController::class, 'deleteSubcategory'])->name('delete-subcategory');
+// Trashed subcategory
+Route::get('/category/trash-subcategory', [App\Http\Controllers\Admin\SubCategoryController::class, 'trashSubcategory'])->name('trash-subcategory');
+Route::get('/category/restore-subcategory/{id}', [App\Http\Controllers\Admin\SubCategoryController::class, 'restoreSubcategory'])->name('restore-subcategory');
+Route::post('/category/permanent-delete-subcategory', [App\Http\Controllers\Admin\SubCategoryController::class, 'permanentDeleteSubcategory'])->name('permanent-delete-subcategory');
+
+
+// ===== News ========||
+
+Route::get('/news/add-news', [App\Http\Controllers\Admin\NewsController::class, 'addNews'])->name('add-news');
+Route::get('/news/manage-news', [App\Http\Controllers\Admin\NewsController::class, 'manageNews'])->name('manage-news');
+Route::get('/news/trashed-news', [App\Http\Controllers\Admin\NewsController::class, 'trashedNews'])->name('trashed-news');
 
