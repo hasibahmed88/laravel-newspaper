@@ -24,8 +24,8 @@ class CreateNewsTable extends Migration
             $table->string('news_image');
             $table->integer('total_view')->default(0);
             $table->integer('total_comment')->default(0);
-            $table->tinyInteger('featured')->nullable();
-            $table->tinyInteger('trending')->nullable();
+            $table->tinyInteger('featured')->nullable()->default(0);
+            $table->tinyInteger('trending')->nullable()->default(0);
             $table->text('tags')->nullable();
             $table->timestamps();
             $table->softDeletes();

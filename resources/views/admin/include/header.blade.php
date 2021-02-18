@@ -52,7 +52,6 @@
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
       <ul class="sl-menu-sub nav flex-column">
-      {{-- Sub Category --}}
         <li class="nav-item"><a href="{{ route('add-news') }}" class="nav-link"><i class="fa fa-plus"></i> Add news</a></li>
         <li class="nav-item"><a href="{{ route('manage-news') }}" class="nav-link"><i class="icon ion-gear-a"></i> Manage news</a></li>
         <li class="nav-item"><a href="{{ route('trashed-news') }}" class="nav-link"><i class="icon ion-trash-a"></i> Trashed news</a></li>

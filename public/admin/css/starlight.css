@@ -11999,7 +11999,7 @@ textarea.parsley-success:focus {
   border-radius: 100%;
 }
 .shadow{
-  box-shadow: 0px 2.4px 28px 0px rgba(58, 59, 69, 0.15)!important;
+  box-shadow: 0px 2px 30px 0px rgba(58, 59, 69, 0.20)!important;
 }
 .sl-sideleft {
   position: fixed;

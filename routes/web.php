@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\TagsController;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +16,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // ===== Admin route ========||
 Route::get('/home', [App\Http\Controllers\Admin\ProjectController::class, 'index'])->name('home');
-
 
 // ===== Categories ========||
 Route::get('/category/manage-category', [App\Http\Controllers\Admin\CategoryController::class, 'manageCategory'])->name('manage-category');
@@ -32,7 +33,6 @@ Route::get('/category/restore-category/{id}', [App\Http\Controllers\Admin\Catego
 Route::post('/category/permanent-delete-category/', [App\Http\Controllers\Admin\CategoryController::class, 'permanentDeleteCategory'])->name('permanent-delete-category');
 
 // ===== Sub Categories ========||
-
 Route::get('/category/manage-subcategory/', [App\Http\Controllers\Admin\SubCategoryController::class, 'manageSubcategory'])->name('manage-subcategory');
 Route::post('/category/new-subcategory/', [App\Http\Controllers\Admin\SubCategoryController::class, 'newSubcategory'])->name('new-subcategory');
 Route::get('/category/edit-subcategory/{id}', [App\Http\Controllers\Admin\SubCategoryController::class, 'editSubcategory'])->name('edit-subcategory');
@@ -48,8 +48,19 @@ Route::post('/category/permanent-delete-subcategory', [App\Http\Controllers\Admi
 
 
 // ===== News ========||
-
 Route::get('/news/add-news', [App\Http\Controllers\Admin\NewsController::class, 'addNews'])->name('add-news');
 Route::get('/news/manage-news', [App\Http\Controllers\Admin\NewsController::class, 'manageNews'])->name('manage-news');
 Route::get('/news/trashed-news', [App\Http\Controllers\Admin\NewsController::class, 'trashedNews'])->name('trashed-news');
+Route::post('/news/new-news', [App\Http\Controllers\Admin\NewsController::class, 'newNews'])->name('new-news');
+Route::get('/news/view-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'viewNews'])->name('view-news');
+Route::get('/news/edit-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'editNews'])->name('edit-news');
+Route::post('/news/update-news', [App\Http\Controllers\Admin\NewsController::class, 'updateNews'])->name('update-news');
+// PUblish & unpublish
+Route::get('/news/publish-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'publishNews'])->name('publish-news');
+Route::get('/news/unpublish-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'unpublishNews'])->name('unpublish-news');
+// Trash news
+Route::post('/news/delete-news', [App\Http\Controllers\Admin\NewsController::class, 'deleteNews'])->name('delete-news');
+Route::get('/news/restore-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'restoreNews'])->name('restore-news');
+Route::post('/news/permanent-delete-news', [App\Http\Controllers\Admin\NewsController::class, 'permanentDeleteNews'])->name('permanent-delete-news');
+
 

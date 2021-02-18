@@ -20,6 +20,8 @@
     <link href="{{'/'}}admin/lib/medium-editor/default.css" rel="stylesheet">
     <link href="{{'/'}}admin/lib/summernote/summernote-bs4.css" rel="stylesheet">
 
+    <link href="{{'/'}}admin/lib/tags/bootstrap-tagsinput.css" rel="stylesheet">
+
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{'/'}}admin/css/starlight.css">
   </head>
@@ -54,33 +56,15 @@
     <script src="{{'/'}}admin/lib/datatables/jquery.dataTables.js"></script>
     <script src="{{'/'}}admin/lib/datatables-responsive/dataTables.responsive.js"></script>
     <script src="{{'/'}}admin/lib/highlightjs/highlight.pack.js"></script>
-    
 
-    <script src="{{'/'}}admin/lib/select2/js/select2.min.js"></script>
+  {{-- tags input --}}
+  <script src="{{'/'}}admin/lib/tags/bootstrap-tagsinput.min.js"></script>
+  <script>
+    // $("select").tagsinput('items')
+  </script>
 
-    <script>
-      $(function(){
+    <script src="{{'/'}}admin/lib/highlightjs/highlight.pack.js"></script>
     
-        'use strict';
-    
-        $('.select2').select2({
-          minimumResultsForSearch: Infinity
-        });
-    
-        // Select2 by showing the search
-        $('.select2-show-search').select2({
-          minimumResultsForSearch: ''
-        });
-    
-        // Select2 with tagging support
-        $('.select2-tag').select2({
-          tags: true,
-          tokenSeparators: [',', ' ']
-        });
-    
-      });
-    </script>
-
     <script src="{{'/'}}admin/lib/medium-editor/medium-editor.js"></script>
     <script src="{{'/'}}admin/lib/summernote/summernote-bs4.min.js"></script>
     <script>
@@ -101,6 +85,7 @@
     <script src="{{'/'}}admin/js/starlight.js"></script>
     <script src="{{'/'}}admin/js/ResizeSensor.js"></script>
     <script src="{{'/'}}admin/js/dashboard.js"></script>
+
 
     <script>
      $('#datatable1').DataTable({
