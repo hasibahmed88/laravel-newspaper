@@ -19,7 +19,7 @@ View News
                 <div class="row justify-content-between">
                     <div class="col-12 col-md-2"><h5>View News</h5></div>
                     <div class="col-12 col-md-2">
-                        <a href="{{ route('edit-news',['id'=>$news->id]) }}" class="btn btn-primary btn-sm">Edit news</a>
+                        <a href="{{ route('edit-news',['id'=>$news->id]) }}" class="btn btn-secondary btn-sm rounded">Edit news</a>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@ View News
                         <option value="">No data found</option>
                     @endforelse
                         
-                    </select>
+                    </select> 
                 </div>
                 <div class="form-group">
                     <label for="subcategory_id">Subcategory Name</label>

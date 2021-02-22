@@ -29,7 +29,6 @@ class NewsController extends Controller
             'news_short_description'    =>  ['required','min:5','max:300'],
             'news_long_description'     =>  ['required','min:5','max:1500'],
             'status'                    =>  ['required'],
-            // 'news_image'                =>  ['required'],
         ]);
     }
 
@@ -145,10 +144,5 @@ class NewsController extends Controller
         unlink('admin/news-image/'.$news->news_image);
         return back()->with('delete_message','News deleted successfull!');
     }
-
-
-    // === View News === ||
-    // === View News === ||
-
 
 }

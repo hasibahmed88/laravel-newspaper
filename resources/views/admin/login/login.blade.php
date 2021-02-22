@@ -28,15 +28,15 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Starlight Responsive Bootstrap 4 Admin Template</title>
+    <title>Dashboard</title>
 
     <!-- vendor css -->
-    <link href="{{ '/' }}admin/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="{{ '/' }}admin/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="{{ asset('/') }}admin/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="{{ asset('/') }}admin/lib/Ionicons/css/ionicons.css" rel="stylesheet">
 
 
     <!-- Starlight CSS -->
-    <link rel="stylesheet" href="{{ '/' }}admin/css/starlight.css">
+    <link rel="stylesheet" href="{{ asset('/') }}admin/css/starlight.css">
   </head>
 
   <body>
@@ -89,9 +89,9 @@
       </div><!-- login-wrapper -->
     </div><!-- d-flex -->
 
-    <script src="{{ '/' }}admin/lib/jquery/jquery.js"></script>
-    <script src="{{ '/' }}admin/lib/popper.js/popper.js"></script>
-    <script src="{{ '/' }}admin/lib/bootstrap/bootstrap.js"></script>
+    <script src="{{ asset('/') }}admin/lib/jquery/jquery.js"></script>
+    <script src="{{ asset('/') }}admin/lib/popper.js/popper.js"></script>
+    <script src="{{ asset('/') }}admin/lib/bootstrap/bootstrap.js"></script>
 
   </body>
 </html>
