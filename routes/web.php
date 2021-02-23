@@ -6,9 +6,11 @@ use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// ===== Front route ========||
+
+Route::get('/', [App\Http\Controllers\Front\ProjectController::class, 'index'])->name('/');
+
 
 // ===== Auth Class ========||
 Auth::routes();
@@ -17,7 +19,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // ===== Admin route ========||
 Route::get('/home', [App\Http\Controllers\Admin\ProjectController::class, 'index'])->name('home');
 
+
 // ===== Categories ========||
+Route::get('/category/add-category', [App\Http\Controllers\Admin\CategoryController::class, 'addCategory'])->name('add-category');
 Route::get('/category/manage-category', [App\Http\Controllers\Admin\CategoryController::class, 'manageCategory'])->name('manage-category');
 Route::post('/category/new-category', [App\Http\Controllers\Admin\CategoryController::class, 'newCategory'])->name('new-category');
 Route::get('/category/edit-category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'editCategory'])->name('edit-category');
@@ -32,7 +36,9 @@ Route::get('/category/trash-category', [App\Http\Controllers\Admin\CategoryContr
 Route::get('/category/restore-category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'restoreCategory'])->name('restore-category');
 Route::post('/category/permanent-delete-category/', [App\Http\Controllers\Admin\CategoryController::class, 'permanentDeleteCategory'])->name('permanent-delete-category');
 
+
 // ===== Sub Categories ========||
+Route::get('/category/add-subcategory/', [App\Http\Controllers\Admin\SubCategoryController::class, 'addSubcategory'])->name('add-subcategory');
 Route::get('/category/manage-subcategory/', [App\Http\Controllers\Admin\SubCategoryController::class, 'manageSubcategory'])->name('manage-subcategory');
 Route::post('/category/new-subcategory/', [App\Http\Controllers\Admin\SubCategoryController::class, 'newSubcategory'])->name('new-subcategory');
 Route::get('/category/edit-subcategory/{id}', [App\Http\Controllers\Admin\SubCategoryController::class, 'editSubcategory'])->name('edit-subcategory');
@@ -64,3 +70,19 @@ Route::get('/news/restore-news/{id}', [App\Http\Controllers\Admin\NewsController
 Route::post('/news/permanent-delete-news', [App\Http\Controllers\Admin\NewsController::class, 'permanentDeleteNews'])->name('permanent-delete-news');
 
 
+// ===== Ads ========||
+
+Route::get('/ads/add-ads', [App\Http\Controllers\Admin\AdsController::class, 'addAds'])->name('add-ads');
+Route::get('/ads/manage-ads', [App\Http\Controllers\Admin\AdsController::class, 'manageAds'])->name('manage-ads');
+Route::get('/ads/trashed-ads', [App\Http\Controllers\Admin\AdsController::class, 'trashedAds'])->name('trashed-ads');
+Route::post('/ads/new-ads', [App\Http\Controllers\Admin\AdsController::class, 'newAds'])->name('new-ads');
+Route::get('/ads/edit-ads/{id}', [App\Http\Controllers\Admin\AdsController::class, 'editAds'])->name('edit-ads');
+Route::post('/ads/update-ads', [App\Http\Controllers\Admin\AdsController::class, 'updateAds'])->name('update-ads');
+Route::get('/ads/view-ads/{id}', [App\Http\Controllers\Admin\AdsController::class, 'viewAds'])->name('view-ads');
+Route::post('/ads/delete-ads', [App\Http\Controllers\Admin\AdsController::class, 'deleteAds'])->name('delete-ads');
+// publish & unpublish
+Route::get('/ads/publish-ads/{id}', [App\Http\Controllers\Admin\AdsController::class, 'publishAds'])->name('publish-ads');
+Route::get('/ads/unpublish-ads/{id}', [App\Http\Controllers\Admin\AdsController::class, 'unpublishAds'])->name('unpublish-ads');
+// prestore & permanent delete
+Route::get('/ads/restore-ads/{id}', [App\Http\Controllers\Admin\AdsController::class, 'restoreAds'])->name('restore-ads');
+Route::post('/ads/permanent-delete-ads', [App\Http\Controllers\Admin\AdsController::class, 'permanentDeleteAds'])->name('permanent-delete-ads');

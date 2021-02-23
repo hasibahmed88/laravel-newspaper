@@ -18,6 +18,10 @@ class CategoryController extends Controller
         $this->middleware('auth');
     }
 
+    public function addCategory(){
+        return view('admin.category.add-category');
+    }
+
     // === Manage Category === ||
     public function manageCategory()
     {

@@ -26,6 +26,7 @@
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
       <ul class="sl-menu-sub nav flex-column">
+        <li class="nav-item"><a href="{{ route('add-category') }}" class="nav-link"><i class="icon ion-gear-a"></i> Add Category</a></li>
         <li class="nav-item"><a href="{{ route('manage-category') }}" class="nav-link"><i class="icon ion-gear-a"></i> Manage Category</a></li>
         <li class="nav-item"><a href="{{ route('trash-category') }}" class="nav-link"><i class="icon ion-trash-a"></i> Trash</a></li>
       </ul>
@@ -39,6 +40,7 @@
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
       <ul class="sl-menu-sub nav flex-column">
+        <li class="nav-item"><a href="{{ route('add-subcategory') }}" class="nav-link"><i class="icon ion-gear-a"></i> Add Sub category</a></li>
         <li class="nav-item"><a href="{{ route('manage-subcategory') }}" class="nav-link"><i class="icon ion-gear-a"></i> Manage Sub category</a></li>
         <li class="nav-item"><a href="{{ route('trash-subcategory') }}" class="nav-link"><i class="icon ion-trash-a"></i> Trash</a></li>
       </ul>
@@ -57,82 +59,72 @@
         <li class="nav-item"><a href="{{ route('trashed-news') }}" class="nav-link"><i class="icon ion-trash-a"></i> Trashed news</a></li>
       </ul>
 
+      {{-- Ads --}}
       <a href="#" class="sl-menu-link">
         <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>
-          <span class="menu-item-label">Forms</span>
+          <i class="menu-item-icon icon ion-images tx-20"></i>
+          <span class="menu-item-label">Ads</span>
           <i class="menu-item-arrow fa fa-angle-down"></i>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
       <ul class="sl-menu-sub nav flex-column">
-        <li class="nav-item"><a href="form-elements.html" class="nav-link">Form Elements</a></li>
-        <li class="nav-item"><a href="form-layouts.html" class="nav-link">Form Layouts</a></li>
-        <li class="nav-item"><a href="form-validation.html" class="nav-link">Form Validation</a></li>
-        <li class="nav-item"><a href="form-wizards.html" class="nav-link">Form Wizards</a></li>
-        <li class="nav-item"><a href="form-editor-text.html" class="nav-link">Text Editor</a></li>
+        <li class="nav-item"><a href="{{ route('add-ads') }}" class="nav-link"><i class="fa fa-plus"></i> Add ads</a></li>
+        <li class="nav-item"><a href="{{ route('manage-ads') }}" class="nav-link"><i class="icon ion-gear-a"></i> Manage ads</a></li>
+        <li class="nav-item"><a href="{{ route('trashed-ads') }}" class="nav-link"><i class="icon ion-trash-a"></i> Trashed Ads</a></li>
       </ul>
+
+    {{-- Newslatter/ subscriber --}}
       <a href="#" class="sl-menu-link">
         <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
-          <span class="menu-item-label">UI Elements</span>
+          <i class="menu-item-icon icon ion-pin tx-24"></i>
+          <span class="menu-item-label">Subscriber</span>
           <i class="menu-item-arrow fa fa-angle-down"></i>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
       <ul class="sl-menu-sub nav flex-column">
-        <li class="nav-item"><a href="accordion.html" class="nav-link">Accordion</a></li>
-        <li class="nav-item"><a href="alerts.html" class="nav-link">Alerts</a></li>
-        <li class="nav-item"><a href="buttons.html" class="nav-link">Buttons</a></li>
-        <li class="nav-item"><a href="cards.html" class="nav-link">Cards</a></li>
-        <li class="nav-item"><a href="icons.html" class="nav-link">Icons</a></li>
-        <li class="nav-item"><a href="modal.html" class="nav-link">Modal</a></li>
-        <li class="nav-item"><a href="navigation.html" class="nav-link">Navigation</a></li>
-        <li class="nav-item"><a href="pagination.html" class="nav-link">Pagination</a></li>
-        <li class="nav-item"><a href="popups.html" class="nav-link">Tooltip &amp; Popover</a></li>
-        <li class="nav-item"><a href="progress.html" class="nav-link">Progress</a></li>
-        <li class="nav-item"><a href="spinners.html" class="nav-link">Spinners</a></li>
-        <li class="nav-item"><a href="typography.html" class="nav-link">Typography</a></li>
+        <li class="nav-item"><a href="map-google.html" class="nav-link">Manage Subscriber</a></li>
       </ul>
-      <a href="#" class="sl-menu-link">
-        <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
-          <span class="menu-item-label">Tables</span>
-          <i class="menu-item-arrow fa fa-angle-down"></i>
-        </div><!-- menu-item -->
-      </a><!-- sl-menu-link -->
-      <ul class="sl-menu-sub nav flex-column">
-        <li class="nav-item"><a href="table-basic.html" class="nav-link">Basic Table</a></li>
-        <li class="nav-item"><a href="table-datatable.html" class="nav-link">Data Table</a></li>
-      </ul>
-      <a href="#" class="sl-menu-link">
-        <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-navigate-outline tx-24"></i>
-          <span class="menu-item-label">Maps</span>
-          <i class="menu-item-arrow fa fa-angle-down"></i>
-        </div><!-- menu-item -->
-      </a><!-- sl-menu-link -->
-      <ul class="sl-menu-sub nav flex-column">
-        <li class="nav-item"><a href="map-google.html" class="nav-link">Google Maps</a></li>
-        <li class="nav-item"><a href="map-vector.html" class="nav-link">Vector Maps</a></li>
-      </ul>
+      
+
+    {{-- Visitors --}}
+    <a href="#" class="sl-menu-link">
+      <div class="sl-menu-item">
+        <i class="menu-item-icon icon ion-person-stalker tx-24"></i>
+        <span class="menu-item-label">Visitors</span>
+        <i class="menu-item-arrow fa fa-angle-down"></i>
+      </div><!-- menu-item -->
+    </a><!-- sl-menu-link -->
+    <ul class="sl-menu-sub nav flex-column">
+      <li class="nav-item"><a href="map-google.html" class="nav-link">Manage Subscriber</a></li>
+    </ul>
+
+    {{-- Comments --}}
+    <a href="#" class="sl-menu-link">
+      <div class="sl-menu-item">
+        <i class="menu-item-icon icon ion-chatboxes tx-24"></i>
+        <span class="menu-item-label">Comments</span>
+        <i class="menu-item-arrow fa fa-angle-down"></i>
+      </div><!-- menu-item -->
+    </a><!-- sl-menu-link -->
+    <ul class="sl-menu-sub nav flex-column">
+      <li class="nav-item"><a href="map-google.html" class="nav-link">Manage Subscriber</a></li>
+    </ul>
+
+    {{-- Message/Inbox --}}
+    <a href="mailbox.html" class="sl-menu-link">
+      <div class="sl-menu-item">
+        <i class="menu-item-icon icon ion-chatbubble-working tx-24"></i>
+        <span class="menu-item-label">Message</span>
+      </div><!-- menu-item -->
+    </a><!-- sl-menu-link -->
+
       <a href="mailbox.html" class="sl-menu-link">
         <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
-          <span class="menu-item-label">Mailbox</span>
+          <i class="menu-item-icon icon ion-gear-a tx-24"></i>
+          <span class="menu-item-label">Setting</span>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
-      <a href="#" class="sl-menu-link">
-        <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
-          <span class="menu-item-label">Pages</span>
-          <i class="menu-item-arrow fa fa-angle-down"></i>
-        </div><!-- menu-item -->
-      </a><!-- sl-menu-link -->
-      <ul class="sl-menu-sub nav flex-column">
-        <li class="nav-item"><a href="blank.html" class="nav-link">Blank Page</a></li>
-        <li class="nav-item"><a href="page-signin.html" class="nav-link">Signin Page</a></li>
-        <li class="nav-item"><a href="page-signup.html" class="nav-link">Signup Page</a></li>
-        <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li>
-      </ul>
+     
     </div><!-- sl-sideleft-menu -->
 
     <br>

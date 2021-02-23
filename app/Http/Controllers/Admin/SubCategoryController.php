@@ -20,11 +20,17 @@ class SubCategoryController extends Controller
         $this->middleware('auth');
     }
 
+    public function addSubcategory(){
+        return view('admin.sub-category.add-subcategory',[
+            'categories'    =>  Category::where('status',1)->get(),
+        ]);
+    }
+
     // === Manage  Subcategory === ||
     public function manageSubcategory()
     {
         return view('admin.sub-category.manage-subcategory',[
-            'categories'    =>  Category::where('status',1)->get(),
+            
             'subcategories' =>  DB::table('sub_categories')
                                     ->join('categories','sub_categories.category_id','categories.id')
                                     ->select('sub_categories.*','categories.category_name')
