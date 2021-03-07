@@ -64,15 +64,15 @@ Add News
                 </div>
                 <div class="form-group">
                     <label for="news_title">News title</label>
-                    <input type="text" name="news_title" id="news_title" class="form-control">
+                    <input type="text" name="news_title" id="news_title" value="{{ old('news_title') }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="news_short_description">News Short Description</label>
-                    <textarea name="news_short_description" id="news_short_description" class="form-control"></textarea>
+                    <textarea name="news_short_description" id="news_short_description" class="form-control">{{ old('news_short_description') }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="summernote">News Long Description</label>
-                    <textarea name="news_long_description" id="summernote" class="form-control"></textarea>
+                    <textarea name="news_long_description" id="summernote" class="form-control">{{ old('news_long_description') }}</textarea>
                 </div>
                 <div class="form-group">
                     <label class="">Status</label> <br>

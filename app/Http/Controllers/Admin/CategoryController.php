@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
+use App\Models\Admin\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -79,8 +81,18 @@ class CategoryController extends Controller
     // === Soft delete category === ||
     public function deleteCategory(Request $request)
     {
-        Category::find($request->id)->delete();
-        return back()->with('delete_category','Category moved on trashed!');
+        $category       = Category::find($request->id);
+        $subCategory    = SubCategory::where('category_id',$category->id)->first();
+        if($category->status == 1){
+            return back()->with('unpublish_category','Category unpublished first! '); 
+        }
+        else if($subCategory){
+            return back()->with('unpublish_category','Cannot move to trashed. Subcategory exists in this category! ');
+        }
+        else{
+            $category->delete();
+            return back()->with('delete_category','Category moved on trashed!');
+        }
     }
 
     // === View Trashed category === ||

@@ -61,7 +61,7 @@ Manage subcategory
                             </label>
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="category_btn" value="Save Category" class="btn btn-success">
+                        <input type="submit" name="category_btn" value="Save Subcategory" class="btn btn-success">
                     </div>
                 </form>
             </div>

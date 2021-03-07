@@ -43,9 +43,10 @@ Manage category
                         </button>
                     </div>
                     @endif
-                    @if(Session::get('delete_category'))
+                    @if(Session::get('delete_category') || Session::get('unpublish_category'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ Session::get('delete_category') }}
+                        {{ Session::get('unpublish_category') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>

@@ -93,14 +93,25 @@ class SubCategoryController extends Controller
 
     // === Soft delete Subategory === ||
     public function deleteSubcategory(Request $request){
-        SubCategory::find($request->id)->delete();
-        return back()->with('message','Subcategory moved to trashed!');
+        $subCategory = SubCategory::find($request->id);
+        if($subCategory->status == 1){
+            return back()->with('unpublish_subcategory','Subcategory unpublished first! '); 
+        }
+        else{
+            $subCategory->delete();
+            return back()->with('message','Subcategory moved to trashed!');
+        }
+        
     }
 
     // === Trashed Subategory === ||
     public function trashSubcategory(){
         return view('admin.sub-category.trashed',[
-            'subcategories' =>  SubCategory::onlyTrashed()->get(),
+            'subcategories' =>  DB::table('sub_categories')
+                                    ->join('categories','sub_categories.category_id','categories.id')
+                                    ->select('sub_categories.*','categories.category_name')
+                                    ->where('sub_categories.deleted_at','!=' ,null)
+                                    ->get(),
         ]);
     }
 

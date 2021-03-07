@@ -26,8 +26,8 @@ class NewsController extends Controller
             'category_id'               =>  ['required'],
             'subcategory_id'            =>  ['required'],
             'news_title'                =>  ['required','min:5','max:100'],
-            'news_short_description'    =>  ['required','min:5','max:300'],
-            'news_long_description'     =>  ['required','min:5','max:1500'],
+            'news_short_description'    =>  ['required','min:5','max:1000'],
+            'news_long_description'     =>  ['required','min:5','max:50000'],
             'status'                    =>  ['required'],
         ]);
     }
