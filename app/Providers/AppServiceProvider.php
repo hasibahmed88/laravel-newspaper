@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Admin\Category;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View()->composer('front.*',function($view){
+            $view->categories    =  Category::where('status',1)->get();
+            
+        });
     }
 }

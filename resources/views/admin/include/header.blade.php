@@ -1,3 +1,5 @@
+
+
   <!-- ########## START: LEFT PANEL ########## -->
   <div class="sl-logo"><a href="{{ route('home') }}"><i class="icon ion-android-star-outline"></i> Newspaper</a></div>
   <div class="sl-sideleft shadow ">
@@ -95,7 +97,7 @@
       </div><!-- menu-item -->
     </a><!-- sl-menu-link -->
     <ul class="sl-menu-sub nav flex-column">
-      <li class="nav-item"><a href="map-google.html" class="nav-link">Manage Subscriber</a></li>
+      <li class="nav-item"><a href="{{ route('manage-visitor') }}" class="nav-link">Manage Visitors</a></li>
     </ul>
 
     {{-- Comments --}}

@@ -11,6 +11,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\Front\ProjectController::class, 'index'])->name('/');
 
+// ===== Visitor ========||
+Route::get('/visitor-register', [App\Http\Controllers\Front\VisitorController::class, 'visitorRegister'])->name('visitor-register');
+Route::get('/visitor-login', [App\Http\Controllers\Front\VisitorController::class, 'visitorLogin'])->name('visitor-login');
+Route::post('/new-visitor', [App\Http\Controllers\Front\VisitorController::class, 'newVisitor'])->name('new-visitor');
+Route::post('/new-visitor-login', [App\Http\Controllers\Front\VisitorController::class, 'newVisitorLogin'])->name('new-visitor-login');
+Route::get('/visitor-log-out/{ip}', [App\Http\Controllers\Front\VisitorController::class, 'visitorLogout'])->name('visitor-log-out');
+Route::get('/check-email/{email}', [App\Http\Controllers\Front\VisitorController::class, 'checkEmail'])->name('check-email');
+Route::get('/login-check-email/{email}', [App\Http\Controllers\Front\VisitorController::class, 'loginCheckEmail'])->name('login-check-email');
+
+// Latest news
+Route::get('news/latest', [App\Http\Controllers\Front\ProjectController::class, 'latestNews'])->name('latest-news');
+Route::get('news/{name}', [App\Http\Controllers\Front\ProjectController::class, 'categoryNews'])->name('category-news');
 
 // ===== Auth Class ========||
 Auth::routes();
@@ -86,3 +98,12 @@ Route::get('/ads/unpublish-ads/{id}', [App\Http\Controllers\Admin\AdsController:
 // prestore & permanent delete
 Route::get('/ads/restore-ads/{id}', [App\Http\Controllers\Admin\AdsController::class, 'restoreAds'])->name('restore-ads');
 Route::post('/ads/permanent-delete-ads', [App\Http\Controllers\Admin\AdsController::class, 'permanentDeleteAds'])->name('permanent-delete-ads');
+
+
+// ===== Visitor ========||
+
+Route::get('/visitors/manage-visitor', [App\Http\Controllers\Admin\VisitorController::class, 'manageVisitor'])->name('manage-visitor');
+Route::post('/visitors/delete-visitor', [App\Http\Controllers\Admin\VisitorController::class, 'deleteVisitor'])->name('delete-visitor');
+Route::get('/visitors/visitor-logout/{ip}', [App\Http\Controllers\Admin\VisitorController::class, 'visitorLogout'])->name('visitor-logout');
+
+
