@@ -29,6 +29,7 @@
 		<link rel="stylesheet" href="{{ asset('/') }}front/css/style.css">
 		<link rel="stylesheet" href="{{ asset('/') }}front/css/skins/all.css">
 		<link rel="stylesheet" href="{{ asset('/') }}front/css/demo.css">
+		
 	</head>
 
 	<body class="skin-orange">
@@ -64,9 +65,10 @@
 										let minutes = date.getMinutes();
 										let localTime = date.toLocaleTimeString()
 										let localDate = date.toLocaleDateString()
-
+										
 										// document.getElementById('date').innerHTML = `Date: ${today} - ${month} - ${year} | Time: ${hour}:${minutes}`
 										document.getElementById('date').innerHTML = `Date:&nbsp;&nbsp;${localDate} &nbsp;&nbsp; | &nbsp;&nbsp; Time:&nbsp; ${localTime} `
+										
 									</script>
 								</div>
 							</form>								
@@ -108,8 +110,10 @@
 						<ul class="nav-list">
 							<li><a href="{{ route('latest-news') }}">সর্বশেষ</a></li>
 							@foreach($categories as $item)
-							<li><a href="{{ route('category-news',['name'=>$item->category_name]) }}">{{ $item->category_name }}</a></li>
+							<li><a href="{{ route('category-news',['name'=>$item->category_name] )}}">{{ $item->category_name }}</a></li>
 							@endforeach
+							<li><a href="{{ route('about') }}">About Us</a></li>
+							<li><a href="{{ route('contact') }}">Contact</a></li>
 							@if(Session::get('visitor_name'))
 								<li class="dropdown magz-dropdown"><a href="#">&nbsp;&nbsp; {{ Session::get('visitor_name') }} <i class="ion-ios-arrow-right"></i></a>
 									<ul class="dropdown-menu">
@@ -349,5 +353,7 @@
 		<script src="{{ asset('/') }}front/scripts/toast/jquery.toast.min.js"></script>
 		<script src="{{ asset('/') }}front/js/demo.js"></script>
 		<script src="{{ asset('/') }}front/js/e-magz.js"></script>
+		
+
 	</body>
 </html>

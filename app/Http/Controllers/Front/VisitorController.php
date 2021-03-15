@@ -40,6 +40,7 @@ class VisitorController extends Controller
 
         session()->put('visitor_name', $request->visitor_name);
         session()->put('visitor_email', $request->email);
+        session()->put('visitor_id', $visitor->id);
 
         return redirect('/');
     }
@@ -51,6 +52,7 @@ class VisitorController extends Controller
             if (password_verify($request->password, $visitor->password)) {
                 $visitor->status = 1;
                 $visitor->save();
+                session()->put('visitor_id', $visitor->id);
                 session()->put('visitor_name', $visitor->visitor_name);
                 session()->put('visitor_email', $visitor->email);
                 return redirect('/');
@@ -66,6 +68,7 @@ class VisitorController extends Controller
 
     // Visitor logout
     public function visitorLogout($ip){
+        session()->forget('visitor_id');
         session()->forget('visitor_name');
         session()->forget('visitor_email');
         $visitor = Visitor::where('ip', $ip)->first();

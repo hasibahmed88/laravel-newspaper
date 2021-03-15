@@ -25,9 +25,9 @@ class NewsController extends Controller
         return $request->validate([
             'category_id'               =>  ['required'],
             'subcategory_id'            =>  ['required'],
-            'news_title'                =>  ['required','min:5','max:100'],
-            'news_short_description'    =>  ['required','min:5','max:1000'],
-            'news_long_description'     =>  ['required','min:5','max:50000'],
+            'news_title'                =>  ['required','min:20','max:100'],
+            'news_short_description'    =>  ['required','min:30','max:1000'],
+            'news_long_description'     =>  ['required','min:50','max:50000'],
             'status'                    =>  ['required'],
         ]);
     }

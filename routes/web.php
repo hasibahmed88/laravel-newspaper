@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\TagsController;
+use App\Http\Controllers\Front\CommentController;
+use App\Http\Controllers\Front\NewslatterController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -10,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 // ===== Front route ========||
 
 Route::get('/', [App\Http\Controllers\Front\ProjectController::class, 'index'])->name('/');
+
+Route::get('/about', [App\Http\Controllers\Front\ProjectController::class, 'about'])->name('about');
+Route::get('/contact', [App\Http\Controllers\Front\ProjectController::class, 'contact'])->name('contact');
+
 
 // ===== Visitor ========||
 Route::get('/visitor-register', [App\Http\Controllers\Front\VisitorController::class, 'visitorRegister'])->name('visitor-register');
@@ -20,9 +27,18 @@ Route::get('/visitor-log-out/{ip}', [App\Http\Controllers\Front\VisitorControlle
 Route::get('/check-email/{email}', [App\Http\Controllers\Front\VisitorController::class, 'checkEmail'])->name('check-email');
 Route::get('/login-check-email/{email}', [App\Http\Controllers\Front\VisitorController::class, 'loginCheckEmail'])->name('login-check-email');
 
+// ===== Comment ========||
+Route::post('/news-comment', [App\Http\Controllers\Front\CommentController::class, 'newsComment'])->name('news-comment');
+
 // Latest news
-Route::get('news/latest', [App\Http\Controllers\Front\ProjectController::class, 'latestNews'])->name('latest-news');
-Route::get('news/{name}', [App\Http\Controllers\Front\ProjectController::class, 'categoryNews'])->name('category-news');
+Route::get('/news/latest', [App\Http\Controllers\Front\ProjectController::class, 'latestNews'])->name('latest-news');
+Route::get('/news/category-news/{name}', [App\Http\Controllers\Front\ProjectController::class, 'categoryNews'])->name('category-news');
+Route::get('/news/{id}/{name}', [App\Http\Controllers\Front\ProjectController::class, 'newsDetails'])->name('news-details');
+
+// ===== Visitor newsletter ========||
+Route::post('/subscribe', [App\Http\Controllers\Front\NewslatterController::class, 'subscribe'])->name('subscribe');
+Route::get('/manage-subscriber', [App\Http\Controllers\Front\NewslatterController::class, 'manageSubscriber'])->name('manage-subscriber');
+Route::post('/delete-subscriber', [App\Http\Controllers\Front\NewslatterController::class, 'deleteSubscriber'])->name('delete-subscriber');
 
 // ===== Auth Class ========||
 Auth::routes();
@@ -106,4 +122,15 @@ Route::get('/visitors/manage-visitor', [App\Http\Controllers\Admin\VisitorContro
 Route::post('/visitors/delete-visitor', [App\Http\Controllers\Admin\VisitorController::class, 'deleteVisitor'])->name('delete-visitor');
 Route::get('/visitors/visitor-logout/{ip}', [App\Http\Controllers\Admin\VisitorController::class, 'visitorLogout'])->name('visitor-logout');
 
+// ===== Manage Comment ========||
+Route::get('/comment/manage-comment', [App\Http\Controllers\Front\CommentController::class, 'manageComment'])->name('manage-comment');
+Route::get('/comment/view-comment/{id}', [App\Http\Controllers\Front\CommentController::class, 'viewComment'])->name('view-comment');
+Route::get('/comment/unpublish-comment/{id}', [App\Http\Controllers\Front\CommentController::class, 'unpublishComment'])->name('unpublish-comment');
+Route::get('/comment/publish-comment/{id}', [App\Http\Controllers\Front\CommentController::class, 'publishComment'])->name('publish-comment');
+Route::post('/comment/delete-comment', [App\Http\Controllers\Front\CommentController::class, 'deleteComment'])->name('delete-comment');
+
+// ===== Visitor Message ========||
+Route::post('/message', [App\Http\Controllers\Admin\ContactController::class, 'message'])->name('message');
+Route::get('/visitor-message', [App\Http\Controllers\Admin\ContactController::class, 'visitorMessage'])->name('visitor-message');
+Route::get('/view-message/{id}', [App\Http\Controllers\Admin\ContactController::class, 'viewMessage'])->name('view-message');
 

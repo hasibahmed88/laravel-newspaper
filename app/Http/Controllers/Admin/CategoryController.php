@@ -45,9 +45,16 @@ class CategoryController extends Controller
     // === New Category === ||
     public function newCategory(Request $request)
     {
-        $this->validateCategory($request);
-        Category::newCategoryInfo($request);
-        return back()->with('message','New category added successfull!');
+        $category_name = $request->category_name;
+        $category = Category::where('category_name',$category_name)->first();
+        if ($category) {
+            return back()->with('warning','Category name already exist!');
+        }
+        else{
+            $this->validateCategory($request);
+            Category::newCategoryInfo($request);
+            return back()->with('message','New category added successfull!');
+        }
     }
 
     // === New Category === ||

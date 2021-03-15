@@ -21,6 +21,7 @@ class News extends Model
         'news_image',
         'total_view',
         'total_comment',
+        'special',
         'featured',
         'trending',
         'tags'
@@ -44,6 +45,7 @@ class News extends Model
         $news->news_short_description   =   $request->news_short_description;
         $news->news_long_description    =   $request->news_long_description;
         $news->status                   =   $request->status;
+        $news->special                  =   $request->special;
         $news->featured                 =   $request->featured;
         $news->trending                 =   $request->trending;
         $news->tags                     =   $request->tags;

@@ -4,6 +4,8 @@
  * Font Name: Lato, Raleway
  */
 /* Lato Hariline */
+
+
 @font-face {
   font-family: 'Lato';
   font-weight: 100;
@@ -224,16 +226,22 @@
   font-weight: 900;
   src: url("../fonts/Merriweather-Black.ttf");
 }
+@font-face {
+  font-family: 'SolaimanLipi';
+  font-weight: 500;
+  src: url("../fonts/SolaimanLipi.ttf");
+}
 /* End Merriweather */
 /*
  * Variable
  */
 /* Colors */
+
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   color: #191E21;
-  font-size: 1.4em;
+  font-size: 1.3em;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -376,6 +384,17 @@ a.vimeo {
 a.twitch {
   background-color: #6441A4;
   color: #fff !important;
+}
+
+/* Custom css */
+.border{
+  border:1px solid #F4F4F4;
+}
+.rounded-sm{
+  border-radius: 3px;
+}
+.rounded{
+  border-radius: 5px;
 }
 
 .main-loading {
@@ -1233,7 +1252,7 @@ section.search .search-result {
   text-decoration: none;
 }
 .firstbar .brand img {
-  width: 200px;
+  width: 180px;
   display: block;
   float: left;
 }
@@ -1901,6 +1920,8 @@ article footer .btn-primary:focus {
   font-family: 'Raleway', sans-serif;
   position: relative;
   z-index: 1;
+  font-family: SolaimanLipi;
+  font-size:18px;
 }
 .menu ul > li > a i {
   margin-left: 5px;

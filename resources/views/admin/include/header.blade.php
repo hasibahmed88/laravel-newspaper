@@ -84,7 +84,7 @@
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
       <ul class="sl-menu-sub nav flex-column">
-        <li class="nav-item"><a href="map-google.html" class="nav-link">Manage Subscriber</a></li>
+        <li class="nav-item"><a href="{{ route('manage-subscriber') }}" class="nav-link">Manage Subscriber</a></li>
       </ul>
       
 
@@ -109,11 +109,11 @@
       </div><!-- menu-item -->
     </a><!-- sl-menu-link -->
     <ul class="sl-menu-sub nav flex-column">
-      <li class="nav-item"><a href="map-google.html" class="nav-link">Manage Subscriber</a></li>
+      <li class="nav-item"><a href="{{ route('manage-comment') }}" class="nav-link">Manage Comment</a></li>
     </ul>
 
     {{-- Message/Inbox --}}
-    <a href="mailbox.html" class="sl-menu-link">
+    <a href="{{ route('visitor-message') }}" class="sl-menu-link">
       <div class="sl-menu-item">
         <i class="menu-item-icon icon ion-chatbubble-working tx-24"></i>
         <span class="menu-item-label">Message</span>

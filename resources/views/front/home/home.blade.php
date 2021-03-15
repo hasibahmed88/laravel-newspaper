@@ -29,167 +29,56 @@
                     </div>
                 </div>
                 <div class="owl-carousel owl-theme slide" id="featured">
+                @foreach($slider as $item)
                     <div class="item">
                         <article class="featured">
                             <div class="overlay"></div>
                             <figure>
-                                <img src="{{ asset('/') }}front/images/news/img04.jpg" alt="Sample Article">
+                                <img src="{{ asset('/') }}admin/news-image/{{ $item->news_image }}" alt="Sample Article">
                             </figure>
                             <div class="details">
-                                <div class="category"><a href="category.html">Computer</a></div>
-                                <h1><a href="single.html">Phasellus iaculis quam sed est elementum vel ornare ligula venenatis</a></h1>
-                                <div class="time">December 26, 2016</div>
+                                <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name]) }}">{{ $item->category_name }}</a></div>
+                                <h1><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->category_name }}</a></h1>
+                                <div class="time">{{ date('F-d-Y', strtotime($item->created_at)) }} </div>
                             </div>
                         </article>
                     </div>
-                    <div class="item">
-                        <article class="featured">
-                            <div class="overlay"></div>
-                            <figure>
-                                <img src="{{ asset('/') }}front/images/news/img14.jpg" alt="Sample Article">
-                            </figure>
-                            <div class="details">
-                                <div class="category"><a href="category.html">Travel</a></div>
-                                <h1><a href="single.html">Class aptent taciti sociosqu ad litora torquent per conubia nostra</a></h1>
-                                <div class="time">December 10, 2016</div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="featured">
-                            <div class="overlay"></div>
-                            <figure>
-                                <img src="{{ asset('/') }}front/images/news/img13.jpg" alt="Sample Article">
-                            </figure>
-                            <div class="details">
-                                <div class="category"><a href="category.html">International</a></div>
-                                <h1><a href="single.html">Maecenas accumsan tortor ut velit pharetra mollis</a></h1>
-                                <div class="time">October 12, 2016</div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="featured">
-                            <div class="overlay"></div>
-                            <figure>
-                                <img src="{{ asset('/') }}front/images/news/img05.jpg" alt="Sample Article">
-                            </figure>
-                            <div class="details">
-                                <div class="category"><a href="category.html">Lifestyle</a></div>
-                                <h1><a href="single.html">Mauris elementum libero at pharetra auctor Fusce ullamcorper elit</a></h1>
-                                <div class="time">November 27, 2016</div>
-                            </div>
-                        </article>
-                    </div>
+                @endforeach 
                 </div>
                 <div class="line">
-                    <div>Latest News</div>
+                    <div>বিশেষ সংবাদ</div>
                 </div>
                 <div class="row">
+                    @foreach($special as $item)
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="row">
-                            <article class="article col-md-12">
-                                <div class="inner">
-                                    <figure>
-                                        <a href="single.html">
-                                            <img src="{{ asset('/') }}front/images/news/img10.jpg" alt="Sample Article">
-                                        </a>
-                                    </figure>
-                                    <div class="padding">
-                                        <div class="detail">
-                                            <div class="time">December 10, 2016</div>
-                                            <div class="category"><a href="category.html">Healthy</a></div>
-                                        </div>
-                                        <h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                        <footer>
-                                            <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
-                                            <a class="btn btn-primary more" href="single.html">
-                                                <div>More</div>
-                                                <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                            </a>
-                                        </footer>
+                        <article class="article col-md-12">
+                            <div class="inner">
+                                <figure>
+                                    <a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">
+                                        <img src="{{ asset('/') }}admin/news-image/{{ $item->news_image }}" alt="Sample Article">
+                                    </a>
+                                </figure>
+                                <div class="padding">
+                                    <div class="detail">
+                                        <div class="time">{{ date('F-d-Y', strtotime($item->created_at)) }}</div>
+                                        <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name]) }}" style="font-size:12px;">{{ $item->category_name }}</a></div>
                                     </div>
-                                </div>
-                            </article>
-                            <article class="article col-md-12">
-                                <div class="inner">
-                                    <figure>
-                                        <a href="single.html">
-                                            <img src="{{ asset('/') }}front/images/news/img06.jpg" alt="Sample Article">
+                                    <h2><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h2>
+                                    <p>{{ Str::limit($item->news_short_description, 150, '...') }}</p>
+                                    <footer>
+                                        <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
+                                        <a class="btn btn-primary more" href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">
+                                            <div>More</div>
+                                            <div><i class="ion-ios-arrow-thin-right"></i></div>
                                         </a>
-                                    </figure>
-                                    <div class="padding">
-                                        <div class="detail">
-                                            <div class="time">December 22, 2016</div>
-                                            <div class="category"><a href="category.html">Healthy</a></div>
-                                        </div>
-                                        <h2><a href="single.html">Exercitation ullamco laboris nisi ut aliquip</a></h2>
-                                        <p>Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat sollicitudin ut est. In fringilla dui dui.</p>
-                                        <footer>
-                                            <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>327</div></a>
-                                            <a class="btn btn-primary more" href="single.html">
-                                                <div>More</div>
-                                                <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                            </a>
-                                        </footer>
-                                    </div>
+                                    </footer>
                                 </div>
-                            </article>
-                        </div>
+                            </div>
+                        </article>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="row">
-                            <article class="article col-md-12">
-                                <div class="inner">
-                                    <figure>                                
-                                        <a href="single.html">
-                                            <img src="{{ asset('/') }}front/images/news/img05.jpg" alt="Sample Article">
-                                        </a>
-                                    </figure>
-                                    <div class="padding">
-                                        <div class="detail">
-                                            <div class="time">December 09, 2016</div>
-                                            <div class="category"><a href="category.html">Lifestyle</a></div>
-                                        </div>
-                                        <h2><a href="single.html">Mauris elementum libero at pharetra auctor</a></h2>
-                                        <p>Vivamus in efficitur mi. Nullam semper justo ut elit lacinia lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
-                                        <footer>
-                                            <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1083</div></a>
-                                            <a class="btn btn-primary more" href="single.html">
-                                                <div>More</div>
-                                                <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                            </a>
-                                        </footer>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article col-md-12">
-                                <div class="inner">
-                                    <figure>
-                                        <a href="single.html">
-                                            <img src="{{ asset('/') }}front/images/news/img07.jpg" alt="Sample Article">
-                                        </a>
-                                    </figure>
-                                    <div class="padding">
-                                        <div class="detail">
-                                            <div class="time">December 21, 2016</div>
-                                            <div class="category"><a href="category.html">Sport</a></div>
-                                        </div>
-                                        <h2><a href="single.html">Sed do eiusmod tempor incididunt ut labore</a></h2>
-                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris elementum libero at pharetra auctor.</p>
-                                        <footer>
-                                            <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>980</div></a>
-                                            <a class="btn btn-primary more" href="single.html">
-                                                <div>More</div>
-                                                <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                            </a>
-                                        </footer>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
+                    
+                    @endforeach
+                    
                 </div>
                 <div class="banner">
                     <a href="#">
@@ -199,20 +88,26 @@
                 <div class="line transparent little"></div>
                 <div class="row">
                     <div class="col-md-6 col-sm-6 trending-tags">
-                        <h1 class="title-col">Trending Tags</h1>
+                        <h1 class="title-col">Featured News</h1>
                         <div class="body-col">
-                            <ol class="tags-list">
-                                <li><a href="#">HTML5</a></li>
-                                <li><a href="#">CSS3</a></li>
-                                <li><a href="#">JavaScript</a></li>
-                                <li><a href="#">jQuery</a></li>
-                                <li><a href="#">Bootstrap</a></li>
-                                <li><a href="#">Responsive</a></li>
-                                <li><a href="#">AuteIrure</a></li>
-                                <li><a href="#">Voluptate</a></li>
-                                <li><a href="#">Veit</a></li>
-                                <li><a href="#">Reprehenderit</a></li>
-                            </ol>
+                            @foreach($featured as $item)
+                            <article class="article-mini">
+                                <div class="inner">
+                                    <figure>
+                                        <a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">
+                                            <img src="{{ asset('/') }}admin/news-image/{{ $item->news_image }}" alt="Sample Article">
+                                        </a>
+                                    </figure>
+                                    <div class="padding">
+                                        <h1><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}">{{ $item->news_title }}</a></h1>
+                                        <div class="detail">
+                                            <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name]) }}">{{ $item->category_name }}</a></div>
+                                            <div class="time">{{ date('F-d-Y', strtotime($item->created_at)) }}</div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
@@ -228,130 +123,51 @@
                             </div>
                         </h1>
                         <div class="body-col vertical-slider" data-max="4" data-nav="#hot-news-nav" data-item="article">
+                        @foreach($trending as $item)
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
-                                        <a href="single.html">
-                                            <img src="{{ asset('/') }}front/images/news/img09.jpg" alt="Sample Article">
+                                        <a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">
+                                            <img src="{{ asset('/') }}admin/news-image/{{ $item->news_image }}" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
-                                        <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
+                                        <h1><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h1>
                                         <div class="detail">
-                                            <div class="category"><a href="category.html">Lifestyle</a></div>
-                                            <div class="time">December 22, 2016</div>
-                                        </div>
+                                            <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name]) }}">{{ $item->category_name }}</a></div>
+                                            <div class="time">{{ date('F-d-Y', strtotime($item->created_at)) }}</div>
+                                        </div> 
                                     </div>
                                 </div>
                             </article>
-                            <article class="article-mini">
-                                <div class="inner">
-                                    <figure>
-                                        <a href="single.html">
-                                            <img src="{{ asset('/') }}front/images/news/img01.jpg" alt="Sample Article">
-                                        </a>
-                                    </figure>
-                                    <div class="padding">
-                                        <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                                        <div class="detail">
-                                            <div class="category"><a href="category.html">Lifestyle</a></div>
-                                            <div class="time">December 22, 2016</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article-mini">
-                                <div class="inner">
-                                    <figure>
-                                        <a href="single.html">
-                                            <img src="{{ asset('/') }}front/images/news/img05.jpg" alt="Sample Article">
-                                        </a>
-                                    </figure>
-                                    <div class="padding">
-                                        <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                                        <div class="detail">
-                                            <div class="category"><a href="category.html">Lifestyle</a></div>
-                                            <div class="time">December 22, 2016</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article-mini">
-                                <div class="inner">
-                                    <figure>
-                                        <a href="single.html">
-                                            <img src="{{ asset('/') }}front/images/news/img02.jpg" alt="Sample Article">
-                                        </a>
-                                    </figure>
-                                    <div class="padding">
-                                        <h1><a href="single.html">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
-                                        <div class="detail">
-                                            <div class="category"><a href="category.html">Travel</a></div>
-                                            <div class="time">December 21, 2016</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article-mini">
-                                <div class="inner">
-                                    <figure>
-                                        <a href="single.html">
-                                            <img src="{{ asset('/') }}front/images/news/img13.jpg" alt="Sample Article">
-                                        </a>
-                                    </figure>
-                                    <div class="padding">
-                                        <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                                        <div class="detail">
-                                            <div class="category"><a href="category.html">International</a></div>
-                                            <div class="time">December 20, 2016</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article-mini">
-                                <div class="inner">
-                                    <figure>
-                                        <a href="single.html">
-                                            <img src="{{ asset('/') }}front/images/news/img08.jpg" alt="Sample Article">
-                                        </a>
-                                    </figure>
-                                    <div class="padding">
-                                        <h1><a href="single.html">Aliquam et metus convallis tincidunt velit ut rhoncus dolor</a></h1>
-                                        <div class="detail">
-                                            <div class="category"><a href="category.html">Computer</a></div>
-                                            <div class="time">December 19, 2016</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
+                        @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="line top">
-                    <div>Just Another News</div>
+                    <div>সর্বাধিক পঠিত </div>
                 </div>
                 <div class="row">
+                @foreach($most_view as $item)
                     <article class="col-md-12 article-list">
                         <div class="inner">
                             <figure>
                                 <a href="single.html">
-                                    <img src="{{ asset('/') }}front/images/news/img11.jpg" alt="Sample Article">
+                                    <img src="{{ asset('/') }}admin/news-image/{{ $item->news_image }}" alt="Sample Article">
                                 </a>
                             </figure>
                             <div class="details">
                                 <div class="detail">
                                     <div class="category">
-                                        <a href="#">Film</a>
+                                        <a href="{{ route('category-news',['name'=>$item->category_name]) }}">{{ $item->category_name }}</a>
                                     </div>
-                                    <div class="time">December 19, 2016</div>
+                                    <div class="time">{{ date('F-d-Y', strtotime($item->created_at)) }}</div>
                                 </div>
-                                <h1><a href="single.html">Donec consequat arcu at ultrices sodales quam erat aliquet diam</a></h1>
-                                <p>
-                                Donec consequat, arcu at ultrices sodales, quam erat aliquet diam, sit amet interdum libero nunc accumsan nisi.
-                                </p>
+                                <h1><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h1>
+                                <p>{{ Str::limit($item->news_short_description, 100, '...') }}</p>
                                 <footer>
                                     <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>273</div></a>
-                                    <a class="btn btn-primary more" href="single.html">
+                                    <a class="btn btn-primary more" href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">
                                         <div>More</div>
                                         <div><i class="ion-ios-arrow-thin-right"></i></div>
                                     </a>
@@ -359,93 +175,7 @@
                             </div>
                         </div>
                     </article>
-                    <article class="col-md-12 article-list">
-                        <div class="inner">
-                            <div class="badge">
-                                Sponsored
-                            </div>
-                            <figure>
-                                <a href="single.html">
-                                    <img src="{{ asset('/') }}front/images/news/img02.jpg" alt="Sample Article">
-                                </a>
-                            </figure>
-                            <div class="details">
-                                <div class="detail">
-                                    <div class="category">
-                                        <a href="#">Travel</a>
-                                    </div>
-                                    <div class="time">December 18, 2016</div>
-                                </div>
-                                <h1><a href="single.html">Maecenas accumsan tortor ut velit pharetra mollis</a></h1>
-                                <p>
-                                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat sollicitudin ut est. In fringilla dui.
-                                </p>
-                                <footer>
-                                    <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>4209</div></a>
-                                    <a class="btn btn-primary more" href="single.html">
-                                        <div>More</div>
-                                        <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                    </a>
-                                </footer>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="col-md-12 article-list">
-                        <div class="inner">
-                            <figure>
-                                <a href="single.html">
-                                    <img src="{{ asset('/') }}front/images/news/img03.jpg" alt="Sample Article">
-                                </a>
-                            </figure>
-                            <div class="details">
-                                <div class="detail">
-                                    <div class="category">
-                                    <a href="#">Travel</a>
-                                    </div>
-                                    <div class="time">December 16, 2016</div>
-                                </div>
-                                <h1><a href="single.html">Nulla facilisis odio quis gravida vestibulum Proin venenatis pellentesque arcu</a></h1>
-                                <p>
-                                    Nulla facilisis odio quis gravida vestibulum. Proin venenatis pellentesque arcu, ut mattis nulla placerat et.
-                                </p>
-                                <footer>
-                                    <a href="#" class="love active"><i class="ion-android-favorite"></i> <div>302</div></a>
-                                    <a class="btn btn-primary more" href="single.html">
-                                        <div>More</div>
-                                        <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                    </a>
-                                </footer>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="col-md-12 article-list">
-                        <div class="inner">
-                            <figure>
-                                <a href="single.html">
-                                    <img src="{{ asset('/') }}front/images/news/img09.jpg" alt="Sample Article">
-                                </a>
-                            </figure>
-                            <div class="details">
-                                <div class="detail">
-                                    <div class="category">
-                                        <a href="#">Healthy</a>
-                                    </div>
-                                    <div class="time">December 16, 2016</div>
-                                </div>
-                                <h1><a href="single.html">Maecenas blandit ultricies lorem id tempor enim pulvinar at</a></h1>
-                                <p>
-                                    Maecenas blandit ultricies lorem, id tempor enim pulvinar at. Curabitur sit amet tortor eu ipsum lacinia malesuada.
-                                </p>
-                                <footer>
-                                    <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>783</div></a>
-                                    <a class="btn btn-primary more" href="single.html">
-                                        <div>More</div>
-                                        <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                    </a>
-                                </footer>
-                            </div>
-                        </div>
-                    </article>
+                @endforeach
                 </div>
             </div>
             <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
@@ -519,93 +249,56 @@
                     </div>
                 </aside>
                 <aside>
-                    <h1 class="aside-title">Popular <a href="#" class="all">See All <i class="ion-ios-arrow-right"></i></a></h1>
+                    <h1 class="aside-title">Recent News <a href="#" class="all">See All <i class="ion-ios-arrow-right"></i></a></h1>
                     <div class="aside-body">
+                    @foreach($recent as $item)
                         <article class="article-mini">
                             <div class="inner">
                                 <figure>
-                                    <a href="single.html">
-                                        <img src="{{ asset('/') }}front/images/news/img07.jpg" alt="Sample Article">
+                                    <a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">
+                                        <img src="{{ asset('/') }}admin/news-image/{{ $item->news_image }}" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="single.html">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
+                                    <h1><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h1>
+                                    <div class="time">
+                                        {{ date('F-d-Y', strtotime($item->created_at)) }}
+                                    </div>
                                 </div>
                             </div>
                         </article>
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="single.html">
-                                        <img src="{{ asset('/') }}front/images/news/img14.jpg" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="single.html">
-                                        <img src="{{ asset('/') }}front/images/news/img09.jpg" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="single.html">Aliquam et metus convallis tincidunt velit ut rhoncus dolor</a></h1>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="single.html">
-                                        <img src="{{ asset('/') }}front/images/news/img11.jpg" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="single.html">dui augue facilisis lacus fringilla pulvinar massa felis quis velit</a></h1>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="single.html">
-                                        <img src="{{ asset('/') }}front/images/news/img06.jpg" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="single.html">neque est semper nulla, ac elementum risus quam a enim</a></h1>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="single.html">
-                                        <img src="{{ asset('/') }}front/images/news/img03.jpg" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="single.html">Morbi vitae nisl ac mi luctus aliquet a vitae libero</a></h1>
-                                </div>
-                            </div>
-                        </article>
+                    @endforeach
                     </div>
                 </aside>
                 <aside>
                     <div class="aside-body">
-                        <form class="newsletter">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if(Session::get('message'))
+                        <div class="alert alert-success alert-dismissible show" role="alert">
+                            {{ Session::get('message') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                        @endif 
+                        <form class="newsletter" action="{{ route('subscribe') }}" method="POST">
+                        @csrf 
                             <div class="icon">
                                 <i class="ion-ios-email-outline"></i>
                                 <h1>Newsletter</h1>
                             </div>
                             <div class="input-group">
-                                <input type="email" class="form-control email" placeholder="Your mail">
+                                <input type="email" name="email" class="form-control " placeholder="Your mail">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-primary"><i class="ion-paper-airplane"></i></button>
+                                    <input type="submit" class="btn btn-primary" value="Subscribe">
                                 </div>
                             </div>
                             <p>By subscribing you will receive new articles in your email.</p>
@@ -793,7 +486,7 @@
 
 <section class="best-of-the-week">
     <div class="container">
-        <h1><div class="text">Best Of The Week</div>
+        <h1><div class="text">সর্বাধিক আলোচিত</div>
             <div class="carousel-nav" id="best-of-the-week-nav">
                 <div class="prev">
                     <i class="ion-ios-arrow-left"></i>
@@ -804,108 +497,25 @@
             </div>
         </h1>
         <div class="owl-carousel owl-theme carousel-1">
+        @foreach($total_comment as $item)
             <article class="article">
                 <div class="inner">
                     <figure>
-                        <a href="single.html">
-                            <img src="{{ asset('/') }}front/images/news/img03.jpg" alt="Sample Article">
+                        <a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">
+                            <img src="{{ asset('/') }}admin/news-image/{{ $item->news_image }}" alt="Sample Article">
                         </a>
                     </figure>
                     <div class="padding">
                         <div class="detail">
-                                <div class="time">December 11, 2016</div>
-                                <div class="category"><a href="category.html">Travel</a></div>
+                                <div class="time">{{ $item->created_at }}</div>
+                                <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name]) }}">{{ $item->category_name }}</a></div>
                         </div>
-                        <h2><a href="single.html">tempor interdum Praesent tincidunt</a></h2>
-                        <p>Praesent tincidunt, leo vitae congue molestie.</p>
+                        <h2><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h2>
+                        <p>{{ Str::limit($item->news_short_description, 100, '...') }}</p>
                     </div>
                 </div>
             </article>
-            <article class="article">
-                <div class="inner">
-                    <figure>
-                        <a href="single.html">
-                            <img src="{{ asset('/') }}front/images/news/img16.jpg" alt="Sample Article">
-                        </a>
-                    </figure>
-                    <div class="padding">
-                        <div class="detail">
-                            <div class="time">December 09, 2016</div>
-                            <div class="category"><a href="category.html">Sport</a></div>
-                        </div>
-                        <h2><a href="single.html">Maecenas porttitor sit amet turpis a semper</a></h2>
-                        <p> Proin vulputate, urna id porttitor luctus, dui augue facilisis lacus.</p>
-                    </div>
-                </div>
-            </article>
-            <article class="article">
-                <div class="inner">
-                    <figure>
-                        <a href="single.html">
-                            <img src="{{ asset('/') }}front/images/news/img15.jpg" alt="Sample Article">
-                        </a>
-                    </figure>
-                    <div class="padding">
-                        <div class="detail">
-                            <div class="time">December 26, 2016</div>
-                            <div class="category"><a href="category.html">Lifestyle</a></div>
-                        </div>
-                        <h2><a href="single.html">Fusce ac odio eu ex volutpat pellentesque</a></h2>
-                        <p>Vestibulum ante ipsum primis in faucibus orci luctus</p>
-                    </div>
-                </div>
-            </article>
-            <article class="article">
-                <div class="inner">
-                    <figure>
-                        <a href="single.html">
-                            <img src="{{ asset('/') }}front/images/news/img14.jpg" alt="Sample Article">
-                        </a>
-                    </figure>
-                    <div class="padding">
-                        <div class="detail">
-                            <div class="time">December 26, 2016</div>
-                            <div class="category"><a href="category.html">Travel</a></div>
-                        </div>
-                        <h2><a href="single.html">Nulla facilisis odio quis gravida vestibulum</a></h2>
-                        <p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
-                    </div>
-                </div>
-            </article>
-            <article class="article">
-                <div class="inner">
-                    <figure>
-                        <a href="single.html">
-                            <img src="{{ asset('/') }}front/images/news/img01.jpg" alt="Sample Article">
-                        </a>
-                    </figure>
-                    <div class="padding">
-                        <div class="detail">
-                            <div class="time">December 26, 2016</div>
-                            <div class="category"><a href="category.html">Travel</a></div>
-                        </div>
-                        <h2><a href="single.html">Fusce Ullamcorper Elit At Felis Cursus Suscipit</a></h2>
-                        <p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
-                    </div>
-                </div>
-            </article>
-            <article class="article">
-                <div class="inner">
-                    <figure>
-                        <a href="single.html">
-                            <img src="{{ asset('/') }}front/images/news/img11.jpg" alt="Sample Article">
-                        </a>
-                    </figure>
-                    <div class="padding">
-                        <div class="detail">
-                            <div class="time">December 26, 2016</div>
-                            <div class="category"><a href="category.html">Travel</a></div>
-                        </div>
-                        <h2><a href="single.html">Donec consequat arcu at ultrices sodales</a></h2>
-                        <p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
-                    </div>
-                </div>
-            </article>
+        @endforeach
         </div>
     </div>
 </section>

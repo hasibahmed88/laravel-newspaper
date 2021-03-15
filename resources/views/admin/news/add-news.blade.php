@@ -96,6 +96,10 @@ Add News
                             <input type="checkbox" id="featured" value="1" name="featured">
                             <span>Featured</span>
                         </label>
+                        <label class="ckbox" for="special">
+                            <input type="checkbox" id="special" value="1" name="special">
+                            <span>special</span>
+                        </label>
                         <label class="ckbox" for="trend">
                             <input type="checkbox" id="trend" value="1" name="trending">
                             <span>Trending</span>
