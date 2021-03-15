@@ -32,8 +32,9 @@ Route::post('/news-comment', [App\Http\Controllers\Front\CommentController::clas
 
 // Latest news
 Route::get('/news/latest', [App\Http\Controllers\Front\ProjectController::class, 'latestNews'])->name('latest-news');
-Route::get('/news/category-news/{name}', [App\Http\Controllers\Front\ProjectController::class, 'categoryNews'])->name('category-news');
-Route::get('/news/{id}/{name}', [App\Http\Controllers\Front\ProjectController::class, 'newsDetails'])->name('news-details');
+Route::get('/news/{name}', [App\Http\Controllers\Front\ProjectController::class, 'categoryNews'])->name('category-news');
+Route::get('/news/{category}/{subcategory}', [App\Http\Controllers\Front\ProjectController::class, 'subcategoryNews'])->name('subcategory-news');
+Route::get('/news/news-details/{id}/{name}', [App\Http\Controllers\Front\ProjectController::class, 'newsDetails'])->name('news-details');
 
 // ===== Visitor newsletter ========||
 Route::post('/subscribe', [App\Http\Controllers\Front\NewslatterController::class, 'subscribe'])->name('subscribe');

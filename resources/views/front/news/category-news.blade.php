@@ -11,17 +11,30 @@
         <div class="col-md-8 text-left">
           <div class="row">
             <div class="col-md-12">        
-                <ol class="breadcrumb">
-                  <li><a href="#">Home</a></li>
-                  <li class="active">{{ $category_name }}</li>
-                </ol>
-                <h4 class="page-title">সংবাদ: {{ $category_name }}</h4>
-                <p class="page-subtitle">Showing all posts with category <i>Computer</i></p>
+               
+                <h4 class="page-title">{{ $category_name }}</h4>
+                @if (isset($subcategory_name))
+                    <h6>- {{ $subcategory_name }}</h6>
+                @endif
+              </div>
+              <div>
+                <nav class="menu" style="border:none;">
+                  <div class="container">
+                    <div id="menu-list">
+                      <ul class="nav-list">
+                        @foreach($subCategory as $item)
+                        <li><a style="font-size:16px" href="{{ route('subcategory-news',['category'=>$item->category_name,'subcategory'=>$item->subcategory_name] )}}">{{ $item->subcategory_name }}</a></li>
+                        @endforeach
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
               </div>
           </div>
           <div class="line"></div>
           <div class="row">
-            @foreach($news as $item)
+            @forelse($news as $item)
             <article class="col-md-12 article-list">
               <div class="inner">
                 <figure class="border rounded">
@@ -48,7 +61,9 @@
                 </div>
               </div>
             </article>
-            @endforeach
+            @empty 
+              <h6 class="text-center text-muted">কোন সংবাদ পাওয়া যায়নি।</h6>
+            @endforelse
             <div class="col-md-12 text-center">
                 {{ $news->links() }}
             </div>
@@ -58,7 +73,7 @@
           <aside>
             <div class="aside-body">
               <figure class="ads">
-                  <a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">
+                  <a href="#">
                     <img src="{{ asset('/') }}front/images/ad.png">
                   </a>
                 <figcaption>Advertisement</figcaption>

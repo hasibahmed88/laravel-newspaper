@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
 use App\Models\Admin\News;
+use App\Models\Admin\SubCategory;
 use App\Models\Front\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -70,6 +71,36 @@ class ProjectController extends Controller
                                 ->where('news.category_id',$category->id)
                                 ->paginate(5),
             'category_name' =>  $name,
+            // 'subCategory'   =>  SubCategory::where('category_id',$category->id)->get(),
+            'subCategory'   =>  DB::table('sub_categories')
+                                ->join('categories','sub_categories.category_id','categories.id')
+                                ->select('sub_categories.*','categories.category_name')
+                                ->where('sub_categories.status',1)
+                                ->where('sub_categories.category_id',$category->id)
+                                ->get(),
+        ]);
+    }
+
+    // Subcategory news
+    public function subcategoryNews($category_name, $subcategory_name){
+        $category       =   Category::where('category_name',$category_name)->first();
+        $subcategory    =   SubCategory::where('subcategory_name',$subcategory_name)->first();
+        return view('front.news.category-news',[
+            'news'          =>  DB::table('news')
+                                ->join('categories','news.category_id','categories.id')
+                                ->select('news.*','categories.category_name')
+                                ->where('news.status',1)
+                                ->where('news.category_id',$category->id)
+                                ->where('news.subcategory_id',$subcategory->id)
+                                ->paginate(5),
+            'subCategory'   =>  DB::table('sub_categories')
+                                ->join('categories','sub_categories.category_id','categories.id')
+                                ->select('sub_categories.*','categories.category_name')
+                                ->where('sub_categories.status',1)
+                                ->where('sub_categories.category_id',$category->id)
+                                ->get(),
+            'category_name'     =>      $category_name,
+            'subcategory_name'  =>      $subcategory_name,
         ]);
     }
 
