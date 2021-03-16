@@ -45,12 +45,13 @@
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-12">
-							<form class="search" autocomplete="off">
+							<form class="search" action="{{ route('search-news') }}" method="POST" autocomplete="off">
+							@csrf
 								<div class="form-group">
 									<div class="input-group">
-										<input type="text" name="q" class="form-control" placeholder="Type something here">									
+										<input type="text" name="search_key" class="form-control" placeholder="সংবাদ খুজুন . . .">									
 										<div class="input-group-btn">
-											<button class="btn btn-primary"><i class="ion-search"></i></button>
+											<button type="submit" class="btn btn-primary"><i class="ion-search"></i></button>
 										</div>
 									</div>
 								</div>
@@ -110,7 +111,7 @@
 						<ul class="nav-list">
 							<li><a href="{{ route('latest-news') }}">সর্বশেষ</a></li>
 							@foreach($categories as $item)
-							<li><a href="{{ route('category-news',['name'=>$item->category_name] )}}">{{ $item->category_name }}</a></li>
+							<li><a href="{{ route('category-news',['name'=>$item->category_name_en] )}}">{{ $item->category_name_bn }}</a></li>
 							@endforeach
 							<li><a href="{{ route('about') }}">About Us</a></li>
 							<li><a href="{{ route('contact') }}">Contact</a></li>
@@ -176,14 +177,32 @@
 							<h1 class="block-title">Newsletter</h1>
 							<div class="block-body">
 								<p>By subscribing you will receive new articles in your email.</p>
-								<form class="newsletter">
+								@if ($errors->any())
+									<div class="alert alert-danger">
+										<ul>
+											@foreach ($errors->all() as $error)
+												<li>{{ $error }}</li>
+											@endforeach
+										</ul>
+									</div>
+								@endif
+								@if(Session::get('message'))
+								<div class="alert alert-success alert-dismissible show" role="alert">
+									{{ Session::get('message') }}
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								@endif 
+								<form class="newsletter" action="{{ route('subscribe') }}" method="POST">
+								@csrf 
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="ion-ios-email-outline"></i>
 										</div>
-										<input type="email" class="form-control email" placeholder="Your mail">
+										<input type="email" name="email" class="form-control" placeholder="Your mail">
 									</div>
-									<button class="btn btn-primary btn-block white">Subscribe</button>
+									<button type="submit" class="btn btn-primary btn-block white">Subscribe</button>
 								</form>
 							</div>
 						</div>

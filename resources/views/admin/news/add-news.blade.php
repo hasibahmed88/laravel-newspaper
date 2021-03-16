@@ -44,7 +44,7 @@ Add News
                     <select class="form-control" name="category_id" id="category_id">
                         <option value="">Select</option>
                     @forelse ($categories as $item)
-                        <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                        <option value="{{ $item->id }}">{{ $item->category_name_bn }}</option>
                     @empty
                         <option value="">No data found</option>
                     @endforelse

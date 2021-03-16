@@ -89,7 +89,7 @@ Manage News
                     @forelse($news as $item)
                         <tr>
                           <td>{{ $i++ }}</td>
-                          <td>{{ $item->category_name }}</td>
+                          <td>{{ $item->category_name_bn }}</td>
                           <td>{{ $item->subcategory_name }}</td>
                           <td>{{ Str::limit($item->news_title, 30, '...') }}</td>
                           <td>{{ Str::limit($item->news_short_description, 60, '...') }}</td>

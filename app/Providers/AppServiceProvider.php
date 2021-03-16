@@ -29,39 +29,32 @@ class AppServiceProvider extends ServiceProvider
             $view->categories   =  Category::where('status',1)->get();
             $view->recent       =  DB::table('news')
                                     ->join('categories','news.category_id','categories.id')
-                                    ->select('news.*','categories.category_name')
+                                    ->select('news.*','categories.category_name_en','categories.category_name_bn')
                                     ->where('news.status',1)
                                     ->take(5)
                                     ->orderBy('news.id','desc')
                                     ->get();
             $view->featured     =  DB::table('news')
                                     ->join('categories','news.category_id','categories.id')
-                                    ->select('news.*','categories.category_name')
+                                    ->select('news.*','categories.category_name_en','categories.category_name_bn')
                                     ->where('news.featured',1)
                                     ->take(5)
                                     ->orderBy('news.id','desc')
                                     ->get();
             $view->trending     =  DB::table('news')
                                     ->join('categories','news.category_id','categories.id')
-                                    ->select('news.*','categories.category_name')
+                                    ->select('news.*','categories.category_name_en','categories.category_name_bn')
                                     ->where('news.trending',1)
                                     ->take(5)
                                     ->orderBy('news.id','desc')
                                     ->get();
             $view->more         =  DB::table('news')
                                     ->join('categories','news.category_id','categories.id')
-                                    ->select('news.*','categories.category_name')
+                                    ->select('news.*','categories.category_name_en','categories.category_name_bn')
                                     ->inRandomOrder()
                                     ->take(10)
                                     ->orderBy('news.id','desc')
                                     ->get();
-            $view->slider       =  DB::table('news')
-                                    ->join('categories','news.category_id','categories.id')
-                                    ->select('news.*','categories.category_name')
-                                    ->where('news.status',1)
-                                    ->inRandomOrder()
-                                    ->orderBy('news.id','desc')
-                                    ->paginate(6);
             
         });
     }

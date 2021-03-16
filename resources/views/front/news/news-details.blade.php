@@ -31,7 +31,7 @@
                                 <div class="padding">
                                     <h1><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h1>
                                     <div class="detail">
-                                        <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name]) }}">{{ $item->category_name }}</a></div>
+                                        <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name_en]) }}">{{ $item->category_name_bn }}</a></div>
                                         <div class="time">{{ date('F-d-Y', strtotime($item->created_at)) }}</div>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                 <div class="padding">
                                     <h1><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h1>
                                     <div class="detail">
-                                        <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name]) }}">{{ $item->category_name }}</a></div>
+                                        <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name_en]) }}">{{ $item->category_name_bn }}</a></div>
                                         <div class="time">{{ date('F-d-Y', strtotime($item->created_at)) }}</div>
                                     </div>
                                 </div>
@@ -84,15 +84,15 @@
             <div class="col-md-8">
                 <ol class="breadcrumb">
                   <li><a href="{{ route('/') }}">Home</a></li>
-                  <li class="active">{{ $news->category_name }}</li>
+                  <li class="active">{{ $news->category_name_bn }}</li>
                 </ol>
                 <article class="article main-article">
                     <header>
                         <h3>{{ $news->news_title }}</h3>
                         <ul class="details">
                             
-                            <li>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }} </li>
-                            <li><a href="{{ route('category-news',['name'=>$news->category_name]) }}">{{ $news->category_name }}</a></li>
+                            <li>{{ date('F-d-Y', strtotime($item->created_at)) }} </li>
+                            <li><a href="{{ route('category-news',['name'=>$news->category_name_en]) }}">{{ $news->category_name_bn }}</a></li>
                             <li>By <a href="#">John Doe</a></li>
                         </ul>
                     </header>
@@ -190,24 +190,25 @@
                         </ul>
                     </div>
                 </div> --}}
-                <div class="line"><div>You May Also Like</div></div>
+                <div class="line"><div> এ সম্পর্কিত আরো পড়ুন</div></div>
                 <div class="row">
-                    <article class="article related col-md-6 col-sm-6 col-xs-12">
+                @foreach($related as $item)
+                    <article class="article related col-md-4 col-sm-6 col-xs-12">
                         <div class="inner">
-                            <figure>
-                                <a href="#">
-                                    <img src="{{ asset('/') }}front/images/news/img03.jpg">
+                                <a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">
+                                    <img height="150px" class="border rounded-sm" src="{{ asset('/') }}admin/news-image/{{ $item->news_image }}">
                                 </a>
-                            </figure>
+                                <br><br>
                             <div class="padding">
-                                <h2><a href="#">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
+                                <h2><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h2>
                                 <div class="detail">
-                                    <div class="category"><a href="category.html">Lifestyle</a></div>
-                                    <div class="time">December 26, 2016</div>
+                                    <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name_en]) }}">{{ $item->category_name_bn }}</a></div>
+                                    <div class="time">{{ date('F-d-Y', strtotime($item->created_at)) }}</div>
                                 </div>
                             </div>
                         </div>
                     </article>
+                @endforeach
                 </div>
                 <div class="line thin"></div>
                 <div class="comments">

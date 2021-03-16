@@ -12,7 +12,8 @@ class Category extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'category_name',
+        'category_name_en',
+        'category_name_bn',
         'category_description',
         'status',
     ];
@@ -21,7 +22,8 @@ class Category extends Model
     public static function newCategoryInfo($request)
     {
         $category = new Category();
-        $category->category_name            =   $request->category_name;
+        $category->category_name_en         =   $request->category_name_en;
+        $category->category_name_bn         =   $request->category_name_bn;
         $category->category_description     =   $request->category_description;
         $category->status                   =   $request->status;
         $category->save();
@@ -31,7 +33,8 @@ class Category extends Model
     public static function updateCategoryInfo($request)
     {
         $category = Category::find($request->id);
-        $category->category_name            =   $request->category_name;
+        $category->category_name_en         =   $request->category_name_en;
+        $category->category_name_bn         =   $request->category_name_bn;
         $category->category_description     =   $request->category_description;
         $category->status                   =   $request->status;
         $category->save();

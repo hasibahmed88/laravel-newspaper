@@ -19,18 +19,8 @@ Contact
                 <div class="page-description">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
-                            <h3>Contact</h3>
-                            <p>
-                                Aliquam in maximus massa. In magna dolor, efficitur vitae faucibus sagittis, elementum quis lacus. Aliquam pretium sem lectus, vitae gravida ex efficitur vitae.
-                            </p>
-                            <p>
-                                Phone: <span class="bold">+123 45 678 9</span> <br>
-                                Email: <span class="bold">hi@yourcompany.com</span>
-                                <br>
-                                <br>
-                                Syarifuddin Street<br>
-                                Indonesia, Bogor Barat 16115
-                            </p>
+                            <h3>{{ $contact->contact_heading }}</h3>
+                           <p>{!! $contact->contact_description !!}</p>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <h3>Send message</h3>

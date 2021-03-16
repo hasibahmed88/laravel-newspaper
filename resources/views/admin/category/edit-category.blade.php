@@ -34,8 +34,12 @@
 
                     <input type="hidden" name="id" value="{{ $category->id }}">
                     <div class="form-group">
-                        <label for="category_name">Category Name</label>
-                        <input type="text" name="category_name" id="category_name" value="{{ $category->category_name }}" class="form-control">
+                        <label for="category_name_en">Category Name English</label>
+                        <input type="text" name="category_name_en" id="category_name_en" value="{{ $category->category_name_en }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="category_name_bn">Category Name Bangla</label>
+                        <input type="text" name="category_name_bn" id="category_name_bn" value="{{ $category->category_name_bn }}" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="category_description">Category Description</label>

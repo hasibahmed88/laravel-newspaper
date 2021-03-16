@@ -56,7 +56,8 @@ Manage category
                       <thead>
                         <tr>
                           <th class="wd-15p">No</th>
-                          <th class="wd-15p">Category Name</th>
+                          <th class="wd-15p">Category Name En</th>
+                          <th class="wd-15p">Category Name Bn</th>
                           <th class="wd-20p">Category Description</th>
                           <th class="wd-15p">Status</th>
                           <th class="wd-10p">Action</th>
@@ -67,7 +68,8 @@ Manage category
                     @forelse($categories as $category)
                         <tr>
                           <td>{{ $i++ }}</td>
-                          <td>{{ $category->category_name }}</td>
+                          <td>{{ $category->category_name_en }}</td>
+                          <td>{{ $category->category_name_bn }}</td>
                           <td>{{ $category->category_description }}</td>
                           <td>
                             @if($category->status == 1)

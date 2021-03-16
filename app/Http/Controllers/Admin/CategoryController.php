@@ -36,9 +36,10 @@ class CategoryController extends Controller
     private function validateCategory($request)
     {
         return $request->validate([
-            'category_name'         =>  ['required','max:30','min:3','string'],
-            'category_description'  =>  ['required','max:150','min:5'],
-            'status'                =>  ['required'],
+            'category_name_en'          =>  ['required','max:30','min:3','string'],
+            'category_name_bn'          =>  ['required','max:30','min:3','string'],
+            'category_description'      =>  ['required','max:150','min:5'],
+            'status'                    =>  ['required'],
         ]);
     }
 

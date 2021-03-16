@@ -120,12 +120,19 @@
       </div><!-- menu-item -->
     </a><!-- sl-menu-link -->
 
-      <a href="mailbox.html" class="sl-menu-link">
+      {{-- News --}}
+      <a href="#" class="sl-menu-link">
         <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-gear-a tx-24"></i>
+          <i class="menu-item-icon icon ion-gear-a tx-20"></i>
           <span class="menu-item-label">Setting</span>
+          <i class="menu-item-arrow fa fa-angle-down"></i>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
+      <ul class="sl-menu-sub nav flex-column">
+        <li class="nav-item"><a href="{{ route('admin-about') }}" class="nav-link"><i class="fa fa-plus"></i> About</a></li>
+        <li class="nav-item"><a href="{{ route('admin-contact') }}" class="nav-link"><i class="icon ion-gear-a"></i> Contact</a></li>
+        <li class="nav-item"><a href="#" class="nav-link"><i class="icon ion-trash-a"></i> Other setting</a></li>
+      </ul>
      
     </div><!-- sl-sideleft-menu -->
 

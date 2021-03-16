@@ -48,7 +48,7 @@ class NewsController extends Controller
             'news'  =>  DB::table('news')
                         ->join('categories','news.category_id','categories.id')
                         ->join('sub_categories','news.subcategory_id','sub_categories.id')
-                        ->select('news.*','categories.category_name','sub_categories.subcategory_name')
+                        ->select('news.*','categories.category_name_bn','sub_categories.subcategory_name')
                         ->where('news.deleted_at',null)
                         ->get()
         ]);
@@ -61,7 +61,7 @@ class NewsController extends Controller
             'news'  =>  DB::table('news')
                         ->join('categories','news.category_id','categories.id')
                         ->join('sub_categories','news.subcategory_id','sub_categories.id')
-                        ->select('news.*','categories.category_name','sub_categories.subcategory_name')
+                        ->select('news.*','categories.category_name_bn','sub_categories.subcategory_name')
                         ->where('news.deleted_at','!=',null)
                         ->get()
         ]);
@@ -102,7 +102,7 @@ class NewsController extends Controller
     {
         $this->validateNews($request);
         News::updateNewsInfo($request);
-        return redirect('news/manage-news')->with('message','News update successfull!');
+        return redirect('/manage-news')->with('message','News update successfull!');
     }
 
     // === Publish & unpublish News === ||

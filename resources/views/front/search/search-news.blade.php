@@ -12,19 +12,19 @@
           <div class="row">
             <div class="col-md-12">        
                
-                <h4 class="page-title">{{ $category_name }}</h4>
+                {{-- <h4 class="page-title">{{ $category_name }}</h4>
                 @if (isset($subcategory_name))
                     <h6>- {{ $subcategory_name }}</h6>
-                @endif
+                @endif --}}
               </div>
               <div>
                 <nav class="menu" style="border:none;">
                   <div class="container">
                     <div id="menu-list">
                       <ul class="nav-list">
-                        @foreach($subCategory as $item)
+                        {{-- @foreach($subCategory as $item)
                         <li><a style="font-size:16px" href="{{ route('subcategory-news',['category'=>$item->category_name_en,'subcategory'=>$item->subcategory_name] )}}">{{ $item->subcategory_name }}</a></li>
-                        @endforeach
+                        @endforeach --}}
                         
                       </ul>
                     </div>
@@ -45,7 +45,7 @@
                 <div class="details">
                   <div class="detail">
                     <div class="category">
-                      <a href="{{ route('category-news',['name'=>$category_name]) }}" style="font-size:12px;">{{ $category_name }}</a>
+                      <a href="{{ route('category-news',['name'=>$item->category_name_en]) }}" style="font-size:12px;">{{ $item->category_name_bn }}</a>
                      </div>
                     <div class="time">{{ $item->created_at }}</div>
                   </div>

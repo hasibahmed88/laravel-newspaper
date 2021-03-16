@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Front\CommentController;
 use App\Http\Controllers\Front\NewslatterController;
+use App\Http\Controllers\Front\SearchController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +19,8 @@ Route::get('/', [App\Http\Controllers\Front\ProjectController::class, 'index'])-
 Route::get('/about', [App\Http\Controllers\Front\ProjectController::class, 'about'])->name('about');
 Route::get('/contact', [App\Http\Controllers\Front\ProjectController::class, 'contact'])->name('contact');
 
+// ===== Search news ========||
+Route::post('/', [App\Http\Controllers\Front\SearchController::class, 'searchNews'])->name('search-news');
 
 // ===== Visitor ========||
 Route::get('/visitor-register', [App\Http\Controllers\Front\VisitorController::class, 'visitorRegister'])->name('visitor-register');
@@ -83,20 +87,20 @@ Route::post('/category/permanent-delete-subcategory', [App\Http\Controllers\Admi
 
 
 // ===== News ========||
-Route::get('/news/add-news', [App\Http\Controllers\Admin\NewsController::class, 'addNews'])->name('add-news');
-Route::get('/news/manage-news', [App\Http\Controllers\Admin\NewsController::class, 'manageNews'])->name('manage-news');
-Route::get('/news/trashed-news', [App\Http\Controllers\Admin\NewsController::class, 'trashedNews'])->name('trashed-news');
-Route::post('/news/new-news', [App\Http\Controllers\Admin\NewsController::class, 'newNews'])->name('new-news');
-Route::get('/news/view-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'viewNews'])->name('view-news');
-Route::get('/news/edit-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'editNews'])->name('edit-news');
-Route::post('/news/update-news', [App\Http\Controllers\Admin\NewsController::class, 'updateNews'])->name('update-news');
+Route::get('/add-news', [App\Http\Controllers\Admin\NewsController::class, 'addNews'])->name('add-news');
+Route::get('/manage-news', [App\Http\Controllers\Admin\NewsController::class, 'manageNews'])->name('manage-news');
+Route::get('/trashed-news', [App\Http\Controllers\Admin\NewsController::class, 'trashedNews'])->name('trashed-news');
+Route::post('/new-news', [App\Http\Controllers\Admin\NewsController::class, 'newNews'])->name('new-news');
+Route::get('/view-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'viewNews'])->name('view-news');
+Route::get('/edit-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'editNews'])->name('edit-news');
+Route::post('/update-news', [App\Http\Controllers\Admin\NewsController::class, 'updateNews'])->name('update-news');
 // PUblish & unpublish
-Route::get('/news/publish-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'publishNews'])->name('publish-news');
-Route::get('/news/unpublish-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'unpublishNews'])->name('unpublish-news');
+Route::get('/publish-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'publishNews'])->name('publish-news');
+Route::get('/unpublish-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'unpublishNews'])->name('unpublish-news');
 // Trash news
-Route::post('/news/delete-news', [App\Http\Controllers\Admin\NewsController::class, 'deleteNews'])->name('delete-news');
-Route::get('/news/restore-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'restoreNews'])->name('restore-news');
-Route::post('/news/permanent-delete-news', [App\Http\Controllers\Admin\NewsController::class, 'permanentDeleteNews'])->name('permanent-delete-news');
+Route::post('/delete-news', [App\Http\Controllers\Admin\NewsController::class, 'deleteNews'])->name('delete-news');
+Route::get('/restore-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'restoreNews'])->name('restore-news');
+Route::post('/permanent-delete-news', [App\Http\Controllers\Admin\NewsController::class, 'permanentDeleteNews'])->name('permanent-delete-news');
 
 
 // ===== Ads ========||
@@ -134,4 +138,12 @@ Route::post('/comment/delete-comment', [App\Http\Controllers\Front\CommentContro
 Route::post('/message', [App\Http\Controllers\Admin\ContactController::class, 'message'])->name('message');
 Route::get('/visitor-message', [App\Http\Controllers\Admin\ContactController::class, 'visitorMessage'])->name('visitor-message');
 Route::get('/view-message/{id}', [App\Http\Controllers\Admin\ContactController::class, 'viewMessage'])->name('view-message');
+
+
+// ===== Setting ========||
+Route::get('/admin/about', [App\Http\Controllers\Admin\SettingController::class, 'about'])->name('admin-about');
+Route::post('/admin/update-about', [App\Http\Controllers\Admin\SettingController::class, 'updateAbout'])->name('update-about');
+Route::get('/admin/contact', [App\Http\Controllers\Admin\SettingController::class, 'contact'])->name('admin-contact');
+Route::post('/admin/update-contact', [App\Http\Controllers\Admin\SettingController::class, 'updateContact'])->name('update-contact');
+
 

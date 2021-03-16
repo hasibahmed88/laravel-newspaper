@@ -31,9 +31,9 @@
                 <div class="details">
                   <div class="detail">
                     <div class="category">
-                     <a href="{{ route('category-news',['name'=>$item->category_name]) }}" style="font-size:12px;">{{ $item->category_name }}</a>
+                     <a href="{{ route('category-news',['name'=>$item->category_name_en]) }}" style="font-size:12px;">{{ $item->category_name_bn }}</a>
                     </div>
-                    <div class="time">{{ $item->created_at }}</div>
+                    <div class="time">{{ date('F-d-Y', strtotime($item->created_at)) }}</div>
                   </div>
                   <h1><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h1>
                   <p>{{ Str::limit($item->news_short_description, 150, '...') }}</p>
@@ -78,8 +78,8 @@
                           <div class="padding">
                               <h1><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h1>
                               <div class="detail">
-                                  <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name]) }}">{{ $item->category_name }}</a></div>
-                                  <div class="time">December 22, 2016</div>
+                                  <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name_en]) }}">{{ $item->category_name_bn }}</a></div>
+                                  <div class="time">{{ date('F-d-Y', strtotime($item->created_at)) }}</div>
                               </div>
                           </div>
                       </div>
@@ -119,7 +119,7 @@
                         <div class="padding">
                             <h1><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h1>
                             <div class="detail">
-                                <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name]) }}">{{ $item->category_name }}</a></div>
+                                <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name_en]) }}">{{ $item->category_name_bn }}</a></div>
                                 <div class="time">December 22, 2016</div>
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                     <div class="padding">
                         <div class="detail">
                                 <div class="time">December 11, 2016</div>
-                                <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name]) }}">{{ $item->category_name }}</a></div>
+                                <div class="category"><a href="{{ route('category-news',['name'=>$item->category_name_en]) }}">{{ $item->category_name_bn }}</a></div>
                         </div>
                         <h2><a href="{{ route('news-details',['name'=>$item->news_title,'id'=>$item->id]) }}">{{ $item->news_title }}</a></h2>
                         <p>{{ Str::limit($item->news_short_description, 100, '...') }}</p>
