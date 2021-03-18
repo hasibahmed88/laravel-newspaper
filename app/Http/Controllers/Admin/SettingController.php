@@ -36,6 +36,7 @@ class SettingController extends Controller
          $contact = ContactInfo::where('id',1)->first();
          $contact->contact_heading      =   $request->contact_heading;
          $contact->contact_description  =   $request->contact_description;
+         $contact->map_location  =   $request->map_location;
          $contact->save();
          return back()->with('message','Contact info updated successfull!');
      }

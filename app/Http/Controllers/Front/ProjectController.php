@@ -8,6 +8,7 @@ use App\Models\Admin\Category;
 use App\Models\Admin\ContactInfo;
 use App\Models\Admin\News;
 use App\Models\Admin\SubCategory;
+use App\Models\Admin\Website ;
 use App\Models\Front\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +18,7 @@ class ProjectController extends Controller
     
     // Index
     public function index(){
-        // $category_game   =    Category::where('status',1)->where('category_name','খেলাধুলা');
         return view('front.home.home',[
-            'categories'    => Category::where('status',1)->get(),
             'special'       =>  DB::table('news')
                                     ->join('categories','news.category_id','categories.id')
                                     ->select('news.*','categories.category_name_en','categories.category_name_bn')
@@ -100,18 +99,6 @@ class ProjectController extends Controller
         ]);
     }
 
-    // About
-    public function about(){
-        return view('front.about.about',[
-            'about' =>  About::where('id',1)->first(),
-        ]);
-    }
-    // Contact
-    public function contact(){
-        return view('front.contact.contact',[
-            'contact' =>  ContactInfo::where('id',1)->first(),
-        ]);
-    }
 
     // Latest News
     public function latestNews(){
@@ -176,6 +163,7 @@ class ProjectController extends Controller
         $hit_count->save();
 
         $news = News::where('news.id',$id)->first();
+        $category_id    =   Category::find($news->category_id);
 
         return view('front.news.news-details',[
             'news'      =>  DB::table('news')
@@ -198,7 +186,22 @@ class ProjectController extends Controller
                             ->where('categories.id',$news->category_id)
                             ->take(6)
                             ->get(),
+            'category_name' =>  Category::where('id',$category_id->id)->first(),
         ]);
     }
+
+    // About
+    public function about(){
+        return view('front.about.about',[
+            'about' =>  About::where('id',1)->first(),
+        ]);
+    }
+    // Contact
+    public function contact(){
+        return view('front.contact.contact',[
+            'contact' =>  ContactInfo::where('id',1)->first(),
+        ]);
+    }
+
 
 }

@@ -5,13 +5,14 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ContactInfo extends Model
+class Website extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'contact_heading',
-        'contact_description',
-        'map_location'
+        'web_header_logo',
+        'web_footer_logo',
+        'web_title',
+        'web_description',
+        'web_footer_text',
     ];
 }

@@ -190,7 +190,7 @@
                         </ul>
                     </div>
                 </div> --}}
-                <div class="line"><div> এ সম্পর্কিত আরো পড়ুন</div></div>
+                <div class="line"><div><a href="{{ route('category-news',['name'=>$item->category_name_en]) }}">{{ $category_name->category_name_bn }}</a>&nbsp; থেকে আরো পড়ুন</div></div>
                 <div class="row">
                 @foreach($related as $item)
                     <article class="article related col-md-4 col-sm-6 col-xs-12">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContactInfosTable extends Migration
+class CreateWebsitesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateContactInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('contact_infos', function (Blueprint $table) {
+        Schema::create('websites', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('contact_heading');
-            $table->text('contact_description');
-            $table->text('map_location');
+            $table->string('web_header_logo');
+            $table->string('web_footer_logo');
+            $table->string('web_title');
+            $table->text('web_description');
+            $table->text('web_footer_text');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateContactInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_infos');
+        Schema::dropIfExists('websites');
     }
 }

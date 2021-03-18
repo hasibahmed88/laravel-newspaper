@@ -39,6 +39,10 @@ Manage Contact
                             <textarea name="contact_description"  id="summernote" class="form-control">{{ $contact->contact_description }}</textarea>
                         </div> 
                         <div class="form-group">
+                            <label for="map_location">Map Location</label>
+                            <textarea name="map_location"  id="map_location" rows="4" class="form-control">{{ $contact->map_location }}</textarea>
+                        </div> 
+                        <div class="form-group">
                             <input type="submit" value="Update" class="btn btn-success">
                         </div>
                     </form>

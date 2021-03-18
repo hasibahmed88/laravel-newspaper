@@ -51,7 +51,7 @@ Edit ads
                     </div>
                     <div class="form-group">
                         <label for="ads_title">Ads title</label>
-                        <input type="text" name="ads_title" id="ads_title" value="{{ $ads->ads_title }}" class="form-control">
+                        <input type="text" name="ads_title" id="ads_title" value="{{ $ads->ads_title }}" class="form-control" placeholder="banner_ads_one">
                     </div>
                     <div class="form-group">
                         <label for="ads_description">Ads descripiton</label>

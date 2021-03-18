@@ -55,6 +55,7 @@ class VisitorController extends Controller
                 session()->put('visitor_id', $visitor->id);
                 session()->put('visitor_name', $visitor->visitor_name);
                 session()->put('visitor_email', $visitor->email);
+
                 return redirect('/');
 
             } else {

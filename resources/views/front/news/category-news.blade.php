@@ -67,6 +67,12 @@
             <div class="col-md-12 text-center">
                 {{ $news->links() }}
             </div>
+
+            <div class="banner">
+              <a href="#">
+                  <img width="100%" height="100px" src="{{ asset('/') }}front/images/1692472613916412ads-2.png" alt="Sample Article">
+              </a>
+        </div>
           </div>
         </div>
         <div class="col-md-4 sidebar">
@@ -119,6 +125,9 @@
                 </form>
               </div>
             </aside>
+            <aside>
+              <img class="border" src="{{ asset('/') }}front/images/1692472765884143side-long-1.png" alt="">
+          </aside>
             <aside>
               <h1 class="aside-title">Trending Post</h1>
               <div class="aside-body">

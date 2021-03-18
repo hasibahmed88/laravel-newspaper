@@ -131,7 +131,7 @@
       <ul class="sl-menu-sub nav flex-column">
         <li class="nav-item"><a href="{{ route('admin-about') }}" class="nav-link"><i class="fa fa-plus"></i> About</a></li>
         <li class="nav-item"><a href="{{ route('admin-contact') }}" class="nav-link"><i class="icon ion-gear-a"></i> Contact</a></li>
-        <li class="nav-item"><a href="#" class="nav-link"><i class="icon ion-trash-a"></i> Other setting</a></li>
+        <li class="nav-item"><a href="{{ route('website-setting') }}" class="nav-link"><i class="icon ion-trash-a"></i> Website setting</a></li>
       </ul>
      
     </div><!-- sl-sideleft-menu -->

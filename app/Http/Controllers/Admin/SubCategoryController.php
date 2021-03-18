@@ -10,15 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class SubCategoryController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function addSubcategory(){
         return view('admin.sub-category.add-subcategory',[

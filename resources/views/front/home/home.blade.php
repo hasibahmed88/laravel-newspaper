@@ -45,6 +45,11 @@
                     </div>
                 @endforeach 
                 </div>
+                <div class="banner">
+                    <a href="#">
+                        <img src="{{ asset('/') }}front/images/ads.png" alt="Sample Article">
+                    </a>
+                </div>
                 <div class="line">
                     <div>বিশেষ সংবাদ</div>
                 </div>
@@ -82,7 +87,7 @@
 
                 <div class="banner">
                     <a href="#">
-                        <img src="{{ asset('/') }}front/images/ads.png" alt="Sample Article">
+                        <img width="100%" height="100px" src="{{ asset('/') }}front/images/1692472613916412ads-2.png" alt="Sample Article">
                     </a>
                 </div>
                 <div class="line transparent little"></div>
@@ -203,77 +208,16 @@
                     </div>
                     @endforeach
                 </div>
-
+                <div class="banner">
+                    <a href="#">
+                        <img width="100%" height="100px" src="{{ asset('/') }}front/images/1692472647935967ads-1.png" alt="Sample Article">
+                    </a>
+                </div>
             </div>
             <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
                 <div class="sidebar-title for-tablet">Sidebar</div>
                 <aside>
-                    <div class="aside-body">
-                        <div class="featured-author">
-                            <div class="featured-author-inner">
-                                <div class="featured-author-cover" style="background-image: url('images/news/img15.jpg');">
-                                    <div class="badges">
-                                        <div class="badge-item"><i class="ion-star"></i> Featured</div>
-                                    </div>
-                                    <div class="featured-author-center">
-                                        <figure class="featured-author-picture">
-                                            <img src="{{ asset('/') }}front/images/img01.jpg" alt="Sample Article">
-                                        </figure>
-                                        <div class="featured-author-info">
-                                            <h2 class="name">John Doe</h2>
-                                            <div class="desc">@JohnDoe</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="featured-author-body">
-                                    <div class="featured-author-count">
-                                        <div class="item">
-                                            <a href="#">
-                                                <div class="name">Posts</div>
-                                                <div class="value">208</div>														
-                                            </a>
-                                        </div>
-                                        <div class="item">
-                                            <a href="#">
-                                                <div class="name">Stars</div>
-                                                <div class="value">3,729</div>														
-                                            </a>
-                                        </div>
-                                        <div class="item">
-                                            <a href="#">
-                                                <div class="icon">
-                                                    <div>More</div>
-                                                    <i class="ion-chevron-right"></i>
-                                                </div>														
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="featured-author-quote">
-                                        "Eur costrict mobsa undivani krusvuw blos andugus pu aklosah"
-                                    </div>
-                                    <div class="block">
-                                        <h2 class="block-title">Photos</h2>
-                                        <div class="block-body">
-                                            <ul class="item-list-round" data-magnific="gallery">
-                                                <li><a href="{{ asset('/') }}front/images/news/img06.jpg" style="background-image: url('images/news/img06.jpg');"></a></li>
-                                                <li><a href="{{ asset('/') }}front/images/news/img07.jpg" style="background-image: url('images/news/img07.jpg');"></a></li>
-                                                <li><a href="{{ asset('/') }}front/images/news/img08.jpg" style="background-image: url('images/news/img08.jpg');"></a></li>
-                                                <li><a href="{{ asset('/') }}front/images/news/img09.jpg" style="background-image: url('images/news/img09.jpg');"></a></li>
-                                                <li><a href="{{ asset('/') }}front/images/news/img10.jpg" style="background-image: url('images/news/img10.jpg');"></a></li>
-                                                <li><a href="{{ asset('/') }}front/images/news/img11.jpg" style="background-image: url('images/news/img11.jpg');"></a></li>
-                                                <li><a href="{{ asset('/') }}front/images/news/img12.jpg" style="background-image: url('images/news/img12.jpg');"><div class="more">+2</div></a></li>
-                                                <li class="hidden"><a href="{{ asset('/') }}front/images/news/img13.jpg" style="background-image: url('images/news/img13.jpg');"></a></li>
-                                                <li class="hidden"><a href="{{ asset('/') }}front/images/news/img14.jpg" style="background-image: url('images/news/img14.jpg');"></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="featured-author-footer">
-                                        <a href="#">See All Authors</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <img class="border" src="{{ asset('/') }}front/images/1692472853780254Screenshot_2.png" alt="">
                 </aside>
                 <aside>
                     <h1 class="aside-title">Recent News <a href="#" class="all">See All <i class="ion-ios-arrow-right"></i></a></h1>
@@ -391,46 +335,12 @@
                         </div>
                     </div>
                 </aside>
-                <aside>
-                    <h1 class="aside-title">Videos
-                        <div class="carousel-nav" id="video-list-nav">
-                            <div class="prev"><i class="ion-ios-arrow-left"></i></div>
-                            <div class="next"><i class="ion-ios-arrow-right"></i></div>
-                        </div>
-                    </h1>
-                    <div class="aside-body">
-                        <ul class="video-list" data-youtube='"carousel":true, "nav": "#video-list-nav"'>
-                            <li><a data-youtube-id="SBjQ9tuuTJQ" data-action="magnific"></a></li>
-                            <li><a data-youtube-id="9cVJr3eQfXc" data-action="magnific"></a></li>
-                            <li><a data-youtube-id="DnGdoEa1tPg" data-action="magnific"></a></li>
-                        </ul>
-                    </div>
-                </aside>
                 <aside id="sponsored">
                     <h1 class="aside-title">Sponsored</h1>
-                    <div class="aside-body">
-                        <ul class="sponsored">
-                            <li>
-                                <a href="#">
-                                    <img src="{{ asset('/') }}front/images/sponsored.png" alt="Sponsored">
-                                </a>
-                            </li> 
-                            <li>
-                                <a href="#">
-                                    <img src="{{ asset('/') }}front/images/sponsored.png" alt="Sponsored">
-                                </a>
-                            </li> 
-                            <li>
-                                <a href="#">
-                                    <img src="{{ asset('/') }}front/images/sponsored.png" alt="Sponsored">
-                                </a>
-                            </li> 
-                            <li>
-                                <a href="#">
-                                    <img src="{{ asset('/') }}front/images/sponsored.png" alt="Sponsored">
-                                </a>
-                            </li> 
-                        </ul>
+                    <div class="banner">
+                        <a href="#">
+                            <img class="border" src="{{ asset('/') }}front/images/169247273275402901-01-300-250-01.jpg" alt="Sample Article">
+                        </a>
                     </div>
                 </aside>
                 <br>
@@ -509,6 +419,9 @@
                         @endforeach
                         </div>
                     </div>
+                </aside>
+                <aside>
+                    <img class="border" src="{{ asset('/') }}front/images/1692472765884143side-long-1.png" alt="">
                 </aside>
             </div>
         </div>

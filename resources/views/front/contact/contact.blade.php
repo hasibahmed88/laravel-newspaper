@@ -74,7 +74,7 @@ Contact
 </section>
 
 <section class="maps">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7927.32512614206!2d106.75366058323345!3d-6.564206896052583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1377e9bdc02eea68!2zNsKwMzMnNDkuOCJTIDEwNsKwNDUnMjAuNiJF!5e0!3m2!1sen!2sid!4v1495165466482" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <iframe src="{{ $contact->map_location }}" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 </section>
 
 @endsection

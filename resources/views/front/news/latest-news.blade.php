@@ -50,6 +50,8 @@
           @endforeach
             <div class="col-md-12 text-center">
               {{$news->links() }}
+              <br>
+              
             </div>
           </div>
         </div>
@@ -128,7 +130,9 @@
               @endforeach
             </div>
         </aside>
-
+        <aside>
+          <img class="border" src="{{ asset('/') }}front/images/1692472765884143side-long-1.png" alt="">
+      </aside>
         </div>
       </div>
     </div>
@@ -136,6 +140,7 @@
 
   <section class="best-of-the-week">
     <div class="container">
+      
         <h1><div class="text">আরও সংবাদ</div>
             <div class="carousel-nav" id="best-of-the-week-nav">
                 <div class="prev">

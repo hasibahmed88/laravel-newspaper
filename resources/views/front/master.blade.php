@@ -13,6 +13,7 @@
 		<meta property="og:url" content="http://github.com/nauvalazhar/Magz" />
 		<meta property="og:image" content="https://raw.githubusercontent.com/nauvalazhar/Magz/master/images/preview.png" />
 		<title>@yield('title')</title>
+		<script src="{{ asset('/') }}front/js/date.js"></script>
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="{{ asset('/') }}front/scripts/bootstrap/bootstrap.min.css">
 		<!-- IonIcons -->
@@ -40,7 +41,7 @@
 						<div class="col-md-3 col-sm-12">
 							<div class="brand">
 								<a href="{{ route('/') }}">
-									<img src="{{ asset('/') }}front/images/logo.png" alt="Magz Logo">
+									<img src="{{ asset('/') }}admin/logo-image/{{ $website_info->web_header_logo }}" alt="{{ $website_info->web_title }}">
 								</a>
 							</div>
 						</div>
@@ -60,26 +61,18 @@
 									<script>
 										let date = new Date();
 										let today = date.getDate()
+										let day = date.getDay()
 										let month = date.getMonth()
 										let year = date.getFullYear()
-										let hour = date.getHours();
-										let minutes = date.getMinutes();
-										let localTime = date.toLocaleTimeString()
-										let localDate = date.toLocaleDateString()
-										
-										// document.getElementById('date').innerHTML = `Date: ${today} - ${month} - ${year} | Time: ${hour}:${minutes}`
-										document.getElementById('date').innerHTML = `Date:&nbsp;&nbsp;${localDate} &nbsp;&nbsp; | &nbsp;&nbsp; Time:&nbsp; ${localTime} `
+
+										document.getElementById('date').innerHTML =  ` ${ banglaDay(day) } , ${ banglaDate(today) } ${banglaMonth(month)} ${ banglaYear(year) }`;
 										
 									</script>
 								</div>
 							</form>								
 						</div>
 						<div class="col-md-3 col-sm-12 text-right">
-						@php 
-						$ip = $_SERVER['REMOTE_ADDR'];
-						$visitor = DB::table('visitors')->where('ip',$ip)->first();					
 						
-						@endphp
 							<ul class="nav-icons">
 							@if(!Session::get('visitor_name'))
 							<li><a href="{{ route('visitor-register') }}"><i class="ion-person-add"></i><div>Register</div></a></li>
@@ -97,8 +90,8 @@
 			<nav class="menu">
 				<div class="container">
 					<div class="brand">
-						<a href="#">
-							<img src="{{ asset('/') }}front/images/logo.png" alt="Magz Logo">
+						<a href="{{ route('/') }}">
+							<img src="{{ asset('/') }}admin/logo-image/{{ $website_info->web_header_logo }}" alt="{!! $website_info->web_title !!}">
 						</a>
 					</div>
 					<div class="mobile-toggle">
@@ -148,31 +141,29 @@
 							<h1 class="block-title">Company Info</h1>
 							<div class="block-body">
 								<figure class="foot-logo">
-									<img src="{{ asset('/') }}front/images/logo-light.png" class="img-responsive" alt="Logo">
+									<img src="{{ asset('/') }}admin/logo-image/{{ $website_info->web_footer_logo }}" class="img-responsive" alt="Logo">
 								</figure>
 								<p class="brand-description">
-									Magz is a HTML5 &amp; CSS3 magazine template based on Bootstrap 3.
+									{!! $website_info->web_description !!}
 								</p>
-								<a href="page.html" class="btn btn-magz white">About Us <i class="ion-ios-arrow-thin-right"></i></a>
+								<a href="{{ route('about') }}" class="btn btn-magz white">About Us <i class="ion-ios-arrow-thin-right"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6 col-xs-12">
 						<div class="block">
-							<h1 class="block-title">Popular Tags <div class="right"><a href="#">See All <i class="ion-ios-arrow-thin-right"></i></a></div></h1>
+							<h1 class="block-title">Categories <div class="right"></div></h1>
 							<div class="block-body">
-								<ul class="tags">
-									<li><a href="#">HTML5</a></li>
-									<li><a href="#">CSS3</a></li>
-									<li><a href="#">Bootstrap 3</a></li>
-									<li><a href="#">Web Design</a></li>
-									<li><a href="#">Creative Mind</a></li>
-									<li><a href="#">Standing On The Train</a></li>
-									<li><a href="#">at 6.00PM</a></li>
+								<ul style="font-size:15px">
+									@foreach($categories as $item)
+									<li><a href="{{ route('category-news',['name'=>$item->category_name_en]) }}">{{ $item->category_name_bn }}</a></li>
+									@endforeach
 								</ul>
 							</div>
 						</div>
-						<div class="line"></div>
+						
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12">
 						<div class="block">
 							<h1 class="block-title">Newsletter</h1>
 							<div class="block-body">
@@ -204,62 +195,6 @@
 									</div>
 									<button type="submit" class="btn btn-primary btn-block white">Subscribe</button>
 								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="block">
-							<h1 class="block-title">Latest News</h1>
-							<div class="block-body">
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="single.html">
-												<img src="{{ asset('/') }}front/images/news/img12.jpg" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="single.html">Donec consequat lorem quis augue pharetra</a></h1>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="single.html">
-												<img src="{{ asset('/') }}front/images/news/img14.jpg" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="single.html">eu dapibus risus aliquam etiam ut venenatis</a></h1>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="single.html">
-												<img src="{{ asset('/') }}front/images/news/img15.jpg" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="single.html">Nulla facilisis odio quis gravida vestibulum </a></h1>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="single.html">
-												<img src="{{ asset('/') }}front/images/news/img16.jpg" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="single.html">Proin venenatis pellentesque arcu vitae </a></h1>
-										</div>
-									</div>
-								</article>
-								<a href="#" class="btn btn-magz white btn-block">See All <i class="ion-ios-arrow-thin-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -336,10 +271,9 @@
 						<div class="block">
 							<div class="block-body no-margin">
 								<ul class="footer-nav-horizontal">
-									<li><a href="index.html">Home</a></li>
-									<li><a href="#">Partner</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<li><a href="page.html">About</a></li>
+									<li><a href="{{ route('/') }}">Home</a></li>
+									<li><a href="{{ route('contact') }}">Contact</a></li>
+									<li><a href="{{ route('about') }}">About</a></li>
 								</ul>
 							</div>
 						</div>
@@ -348,10 +282,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="copyright">
-							COPYRIGHT &copy; MAGZ 2017. ALL RIGHT RESERVED.
-							<div>
-								Made with <i class="ion-heart"></i> by <a href="http://kodinger.com">Kodinger</a>
-							</div>
+							{{ $website_info->web_footer_text }}
 						</div>
 					</div>
 				</div>
@@ -371,6 +302,7 @@
 		<script src="{{ asset('/') }}front/scripts/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="{{ asset('/') }}front/scripts/toast/jquery.toast.min.js"></script>
 		<script src="{{ asset('/') }}front/js/demo.js"></script>
+		
 		<script src="{{ asset('/') }}front/js/e-magz.js"></script>
 		
 
