@@ -105,6 +105,8 @@ Route::group(['middleware' => 'superAdmin'], function () {
     Route::get('/restore-news/{id}', [App\Http\Controllers\Admin\NewsController::class, 'restoreNews'])->name('restore-news');
     Route::post('/permanent-update-newsupdate-newsdelete-news', [App\Http\Controllers\Admin\NewsController::class, 'permanentDeleteNews'])->name('permanent-delete-news');
 
+    // ===== Get subcategory by ajax ========||
+    Route::get('/get/subcategory/{id}', [App\Http\Controllers\Admin\NewsController::class, 'getSubcategory']);
 
     // ===== Ads ========||
 

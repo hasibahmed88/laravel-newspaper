@@ -55,11 +55,6 @@ Add News
                     <label for="subcategory_id">Subcategory Name</label>
                     <select class="form-control" name="subcategory_id" id="subcategory_id">
                         <option value="">Select</option>
-                    @forelse ($subcategories as $item)
-                        <option value="{{ $item->id }}">{{ $item->subcategory_name }}</option>
-                    @empty
-                        <option value="">No data found</option>
-                    @endforelse
                     </select>
                 </div>
                 <div class="form-group">
@@ -85,7 +80,7 @@ Add News
                             <span>Unpublish</span>
                         </label>
                 </div>
-                <div class="form-group">
+                <div class="form-group"> 
                     <label for="tags">Tags</label>
                     <input type="text" class="form-control" data-role="tagsinput" name="tags">
                 </div>
@@ -109,7 +104,9 @@ Add News
                 </div>
                 <div class="form-group">
                     <label for="news_image">News Image</label> <br>
-                    <input type="file" name="news_image" id="news_image" class="form-control">
+                    <input type="file" name="news_image" id="news_image" class="form-control" onchange="readURL1(this)">
+                    <br>
+                    <img class="border rounded" src="#" id="one" alt="">
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Save News" class="btn btn-success">
@@ -119,5 +116,45 @@ Add News
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+{{-- get subcategory --}}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('select[name="category_id"]').on('change',function(){
+            var category_id = $(this).val();
+            $.ajax({
+                url     :   "{{ url('/get/subcategory/') }}/"+category_id,
+                method  :   "GET",
+                dataType:   'JSON',
+                success :   function(data){         
+                    var d = $('select[name="subcategory_id"]').empty();
+
+                    $.each(data,function(key,value){
+                        $('select[name="subcategory_id"]').append('<option value=" '+value.id+' ">' + value.subcategory_name + '</option>');
+                    });
+                }
+            });
+        });
+    });
+
+</script>
+
+{{-- Get image by ajax --}}
+
+<script type="text/javascript">
+function readURL1(input){
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $('#one')
+                    .attr('src',e.target.result)
+                    .width(150);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
 
 @endsection
