@@ -106,19 +106,10 @@
                         <p>{!! $news->news_long_description !!}</p>
                     </div>
                     <footer>
-                        <div class="col">
-                            <ul class="tags">
-                                <li><a href="#">Free Themes</a></li>
-                                <li><a href="#">Bootstrap 3</a></li>
-                                <li><a href="#">Responsive Web Design</a></li>
-                                <li><a href="#">HTML5</a></li>
-                                <li><a href="#">CSS3</a></li>
-                                <li><a href="#">Web Design</a></li>
-                            </ul>
-                        </div>
-                        <div class="col">
-                            <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1220</div></a>
-                        </div>
+                        <div class="col"></div>
+                            <div class="col">
+                                <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1220</div></a>
+                            </div>
                     </footer>
                 </article>
                 <div class="sharing">
