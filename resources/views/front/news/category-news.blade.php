@@ -67,13 +67,14 @@
             <div class="col-md-12 text-center">
                 {{ $news->links() }}
             </div>
-
-            <div class="banner">
-              <a href="#">
-                  <img width="100%" height="100px" src="{{ asset('/') }}front/images/1692472613916412ads-2.png" alt="Sample Article">
-              </a>
-        </div>
           </div>
+
+          <div class="banner">
+            <a href="#">
+                <img width="100%" height="100px" src="{{ asset('/') }}front/images/1692472613916412ads-2.png" alt="Sample Article">
+            </a>
+          </div>
+          
         </div>
         <div class="col-md-4 sidebar">
           <aside>
