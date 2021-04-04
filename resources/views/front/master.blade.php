@@ -65,7 +65,7 @@
 										let month = date.getMonth()
 										let year = date.getFullYear()
 
-										document.getElementById('date').innerHTML =  ` ${ banglaDay(day) } , ${ banglaDate(today) } ${banglaMonth(month)} ${ banglaYear(year) }`;
+										document.getElementById('date').innerHTML =  ` ${ banglaDate(today) } ${banglaMonth(month)} ${ banglaYear(year) }`;
 										
 									</script>
 								</div>
