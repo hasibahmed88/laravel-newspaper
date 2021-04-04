@@ -107,17 +107,12 @@
                     </div>
                     <footer>
                         <div class="col">
-                            <ul class="tags">
-                                <li><a href="#">Free Themes</a></li>
-                                <li><a href="#">Bootstrap 3</a></li>
-                                <li><a href="#">Responsive Web Design</a></li>
-                                <li><a href="#">HTML5</a></li>
-                                <li><a href="#">CSS3</a></li>
-                                <li><a href="#">Web Design</a></li>
-                            </ul>
+                            {{-- <a href="#" class="love">Watch:  <div>{{ $news->total_view }}</div></a> --}}
+                            <p>Watch: <span class="text-info"><strong>{{ $news->total_view }}</strong></span></p>
                         </div>
                         <div class="col">
-                            <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1220</div></a>
+                            {{-- <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1220</div></a> --}}
+                            &nbsp;
                         </div>
                     </footer>
                 </article>
@@ -125,28 +120,23 @@
                 <div class="title"><i class="ion-android-share-alt"></i> Sharing is caring</div>
                     <ul class="social">
                         <li>
-                            <a href="#" class="facebook">
+                            <a href="#" class="facebook" id="facebook-btn" target="blank">
                                 <i class="ion-social-facebook"></i> Facebook
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="twitter">
+                            <a href="#" class="twitter" id="twitter-btn" target="blank">
                                 <i class="ion-social-twitter"></i> Twitter
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="googleplus">
+                            <a href="#" class="googleplus" id="googleplus-btn" target="blank">
                                 <i class="ion-social-googleplus"></i> Google+
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="linkedin">
+                            <a href="#" class="linkedin" id="linkedin-btn" target="blank">
                                 <i class="ion-social-linkedin"></i> Linkedin
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="skype">
-                                <i class="ion-ios-email-outline"></i> Email
                             </a>
                         </li>
                     </ul>
@@ -274,5 +264,23 @@
     </div>
 </section>
 
+<script>
+    
+    const facebookBtn = document.getElementById('facebook-btn')
+    const twitterBtn = document.getElementById('twitter-btn')
+    const googleBtn = document.getElementById('googleplus-btn')
+    const linkedinBtn = document.getElementById('linkedin-btn')
+    const emailBtn = document.getElementById('email-btn')
+
+    let postUrl = encodeURI(document.location.href)
+    let postTitle = encodeURI('{{ $news->news_title  }}')
+
+
+    facebookBtn.setAttribute("href",`https://www.facebook.com/sharer.php?u=${postUrl}`)
+    twitterBtn.setAttribute("href", `https://twitter.com/share?url=${postUrl}&text=${ postTitle }`)
+    googleBtn.setAttribute("href", `https://plus.google.com/share?url=${postUrl}`)
+    linkedinBtn.setAttribute("href",`https://www.linkedin.com/shareArticle?url=${ postUrl }&title=${ postTitle }`)
+
+</script>
 
 @endsection
