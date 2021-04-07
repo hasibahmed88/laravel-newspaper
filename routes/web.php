@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Front\CommentController;
 use App\Http\Controllers\Front\NewslatterController;
+use App\Http\Controllers\Front\ReplyController;
 use App\Http\Controllers\Front\SearchController;
 use App\Http\Controllers\Front\WebsiteController;
 use GuzzleHttp\Psr7\Request;
@@ -25,6 +26,7 @@ Route::get('/contact', [App\Http\Controllers\Front\ProjectController::class, 'co
 Route::post('/', [App\Http\Controllers\Front\SearchController::class, 'searchNews'])->name('search-news');
 
 // ===== Visitor ========||
+Route::get('/visitor-profile/{id}', [App\Http\Controllers\Front\VisitorController::class, 'visitorProfile'])->name('visitor-profile');
 Route::get('/visitor-register', [App\Http\Controllers\Front\VisitorController::class, 'visitorRegister'])->name('visitor-register');
 Route::get('/visitor-login', [App\Http\Controllers\Front\VisitorController::class, 'visitorLogin'])->name('visitor-login');
 Route::post('/new-visitor', [App\Http\Controllers\Front\VisitorController::class, 'newVisitor'])->name('new-visitor');
@@ -35,6 +37,10 @@ Route::get('/login-check-email/{email}', [App\Http\Controllers\Front\VisitorCont
 
 // ===== Comment ========||
 Route::post('/news-comment', [App\Http\Controllers\Front\CommentController::class, 'newsComment'])->name('news-comment');
+
+// ===== Reply ========||
+Route::post('/reply-comment', [App\Http\Controllers\Front\ReplyController::class, 'replyComment'])->name('reply-comment');
+
 
 // Latest news
 Route::get('/news/latest', [App\Http\Controllers\Front\ProjectController::class, 'latestNews'])->name('latest-news');

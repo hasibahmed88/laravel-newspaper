@@ -1,3 +1,6 @@
+@php 
+	$ip = $_SERVER['REMOTE_ADDR'];
+@endphp
 <!DOCTYPE html>
 <html>
 	<head>
@@ -57,7 +60,7 @@
 									</div>
 								</div>
 								<div class="help-block">
-									<p id="date"></p>
+									<p id="date" style="font-size:14px;"></p>
 									<script>
 										let date = new Date();
 										let today = date.getDate()
@@ -65,21 +68,32 @@
 										let month = date.getMonth()
 										let year = date.getFullYear()
 
-										document.getElementById('date').innerHTML =  ` ${ banglaDate(today) } ${banglaMonth(month)} ${ banglaYear(year) }`;
+										document.getElementById('date').innerHTML =  ` ${ banglaDay(day) },  ${ banglaDate(today) } ${banglaMonth(month)} ${ banglaYear(year) }`;
 										
 									</script>
 								</div>
 							</form>								
 						</div>
 						<div class="col-md-3 col-sm-12 text-right">
-						
-							<ul class="nav-icons">
 							@if(!Session::get('visitor_name'))
+							<ul class="nav-icons">
+							
 							<li><a href="{{ route('visitor-register') }}"><i class="ion-person-add"></i><div>Register</div></a></li>
 							<li><a href="{{ route('visitor-login') }}"><i class="ion-person"></i><div>Login</div></a></li>
-							@endif
 							
 							</ul>
+							@else 
+							<div class="dropdown">
+								<button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									{{ Session::get('visitor_name') }} &nbsp; <i class="ion-ios-arrow-right"></i>
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a href="{{ route('visitor-profile',['id'=>Session::get('visitor_id')]) }}" class="dropdown-item"><i class="icon ion-person"></i> &nbsp; My Account</a>
+									<a href="{{ route('visitor-log-out',['ip'=>$ip]) }}"  class="dropdown-item"><i class="icon ion-log-out"></i>&nbsp; Logout</a>
+								
+								</div>
+							  </div>
+							@endif
 							
 						</div>
 					</div>
@@ -106,21 +120,9 @@
 							@foreach($categories as $item)
 							<li><a href="{{ route('category-news',['name'=>$item->category_name_en] )}}">{{ $item->category_name_bn }}</a></li>
 							@endforeach
-							<li><a href="{{ route('about') }}">About Us</a></li>
+							<li><a href="{{ route('about') }}">About</a></li>
 							<li><a href="{{ route('contact') }}">Contact</a></li>
-							@if(Session::get('visitor_name'))
-								<li class="dropdown magz-dropdown"><a href="#">&nbsp;&nbsp; {{ Session::get('visitor_name') }} <i class="ion-ios-arrow-right"></i></a>
-									<ul class="dropdown-menu">
-										<li><a href="#"><i class="icon ion-person"></i> My Account</a></li>
-										<li><a href="#"><i class="icon ion-heart"></i> Favorite</a></li>
-										<li><a href="#"><i class="icon ion-chatbox"></i> Comments</a></li>
-										<li><a href="#"><i class="icon ion-key"></i> Change Password</a></li>
-										<li><a href="#"><i class="icon ion-settings"></i> Settings</a></li>
-										<li class="divider"></li>
-										<li><a href="{{ route('visitor-log-out',['ip'=>$ip]) }}"><i class="icon ion-log-out"></i> Logout</a></li>
-									</ul>
-								</li>
-							@endif
+							
 						</ul>
 					</div>
 				</div>

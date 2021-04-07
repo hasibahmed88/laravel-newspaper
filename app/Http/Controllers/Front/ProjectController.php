@@ -10,8 +10,10 @@ use App\Models\Admin\News;
 use App\Models\Admin\SubCategory;
 use App\Models\Admin\Website ;
 use App\Models\Front\Comment;
+use App\Models\Front\Reply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class ProjectController extends Controller
 {

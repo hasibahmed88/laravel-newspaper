@@ -25,7 +25,6 @@
                         @foreach($subCategory as $item)
                         <li><a style="font-size:16px" href="{{ route('subcategory-news',['category'=>$item->category_name_en,'subcategory'=>$item->subcategory_name] )}}">{{ $item->subcategory_name }}</a></li>
                         @endforeach
-                        
                       </ul>
                     </div>
                   </div>

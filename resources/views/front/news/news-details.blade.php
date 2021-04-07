@@ -1,9 +1,32 @@
+
 @extends('front.master')
 @section('title')
 সর্বশেষ
 @endsection
 
 @section('body')
+
+<style>
+
+#reply-button{
+    border:none;
+    background-color: transparent;
+    font-weight:bold;
+}
+#reply-button:focus{
+    outline:none;
+}
+.reply-textarea{
+    width: 100%;
+    border:1px solid #dddddd;
+    padding:5px;
+    transition: .4s;
+}
+.reply-textarea:focus{
+    outline:1px solid #111111;
+}
+
+</style>
 
 <section class="single">
     <div class="container">
@@ -90,10 +113,9 @@
                     <header>
                         <h3>{{ $news->news_title }}</h3>
                         <ul class="details">
-                            
                             <li>{{ date('F-d-Y', strtotime($item->created_at)) }} </li>
                             <li><a href="{{ route('category-news',['name'=>$news->category_name_en]) }}">{{ $news->category_name_bn }}</a></li>
-                            <li>By <a href="#">John Doe</a></li>
+                            {{-- <li>By <a href="#">John Doe</a></li> --}}
                         </ul>
                     </header>
                     <div class="main">
@@ -141,45 +163,7 @@
                         </li>
                     </ul>
                 </div>
-                {{-- <div class="line">
-                    <div>Author</div>
-                </div>
-                <div class="author">
-                    <figure>
-                        <img src="{{ asset('/') }}front/images/img01.jpg">
-                    </figure>
-                    <div class="details">
-                        <div class="job">Web Developer</div>
-                        <h3 class="name">John Doe</h3>
-                        <p>Nulla sagittis rhoncus nisi, vel gravida ante. Nunc lobortis condimentum elit, quis porta ipsum rhoncus vitae. Curabitur magna leo, porta vel fringilla gravida, consectetur in libero. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
-                        <ul class="social trp sm">
-                            <li>
-                                <a href="#" class="facebook">
-                                    <svg><rect/></svg>
-                                    <i class="ion-social-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="twitter">
-                                    <svg><rect/></svg>
-                                    <i class="ion-social-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="youtube">
-                                    <svg><rect/></svg>
-                                    <i class="ion-social-youtube"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="googleplus">
-                                    <svg><rect/></svg>
-                                    <i class="ion-social-googleplus"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div> --}}
+
                 <div class="line"><div><a href="{{ route('category-news',['name'=>$item->category_name_en]) }}">{{ $category_name->category_name_bn }}</a>&nbsp; থেকে আরো পড়ুন</div></div>
                 <div class="row">
                 @foreach($related as $item)
@@ -205,11 +189,11 @@
                     <h5 class="title">Comments <a href="#">Write a comment</a></h5>
                     <div class="comment-list">
                     @forelse($comments as $item)
-                        <div class="item">
+                        {{-- <div class="item">
                             <div class="user">                                
-                                {{-- <figure>
+                                <figure>
                                     <img src="{{ asset('/') }}front/images/img01.jpg">
-                                </figure> --}}
+                                </figure>
                                 <div class="details">
                                     <h6 class="name">{{ $item->visitor_name }}</h6>
                                     <div class="time">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</div>
@@ -221,7 +205,109 @@
                                     </footer>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+                        
+                        {{-- Nested comment --}}
+						<div class="comments">
+							<div class="comment-list">
+								
+								<div class="item" style="padding:10px">
+									<div class="user">                                
+										{{-- <figure>
+											<img src="images/img01.jpg">
+										</figure> --}}
+
+                                        <style>
+                                            #reply-box{{ $item->id }}{
+                                                display: none;
+                                            }
+                                        </style>
+
+										<div class="details">
+											<h6 class="name">{{ $item->visitor_name }}</h6>
+											<div class="time">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</div>
+											<div class="description">
+                                                <p>{{ $item->comment }}</p>
+											</div>
+											<footer>
+												<a href="#" id="reply-button" onclick="
+                                                    event.preventDefault();
+                                                    document.getElementById('reply-box'+{{$item->id}}).style.display = 'block'
+                                                " >Reply</a>
+											</footer>
+                                            <div id="reply-box{{ $item->id }}">
+                                                <form action="{{ route('reply-comment') }}" class="row" action="{{ route('news-comment') }}" method="POST">
+                                                    @csrf 
+                                                        <input type="hidden" name="news_id" value="{{ $news->id }}">
+                                                        <input type="hidden" name="visitor_id" value="{{ Session::get('visitor_id') }}">
+                                                        <input type="hidden" name="comment_id" value="{{ $item->id }}">
+                                                        <div class="form-group col-md-12">
+                                                            <textarea class="reply-textarea" name="reply_comment" placeholder="Write your reply ..." rows="3"></textarea>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <button type="submit" class="btn btn-primary btn-sm">Reply</button>
+                                                        </div>
+                                                    </form>
+                                            </div>
+										</div>
+									</div>
+                                @php 
+                                    $replies  =  DB::table('replies')
+                                                ->join('visitors','replies.visitor_id','visitors.id')
+                                                ->join('news','replies.news_id','news.id')
+                                                ->select('replies.*','visitors.visitor_name')
+                                                ->where('news.id',$news->id)
+                                                ->where('comment_id',$item->id)
+                                                ->orderBy('replies.id','desc')
+                                                ->get();
+                                @endphp
+                                @foreach($replies as $item)
+									<div class="reply-list">
+										<div class="item" style="padding:0;margin:0">
+											<div class="user">                                
+												{{-- <figure>
+													<img src="images/img01.jpg">
+												</figure> --}}
+												<div class="details">
+													<h6 class="name">{{ $item->visitor_name }}</h6>
+													<span class="time">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
+													<div class="description" style="margin:0;padding:0">
+														{{ $item->reply_comment }}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+                                @endforeach
+								</div>
+								
+							</div>
+
+							{{-- <form class="row">
+								<div class="col-md-12">
+									<h3 class="title">Leave Your Response</h3>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="name">Name <span class="required"></span></label>
+									<input type="text" id="name" name="" class="form-control">
+								</div>
+								<div class="form-group col-md-4">
+									<label for="email">Email <span class="required"></span></label>
+									<input type="email" id="email" name="" class="form-control">
+								</div>
+								<div class="form-group col-md-4">
+									<label for="website">Website</label>
+									<input type="url" id="website" name="" class="form-control">
+								</div>
+								<div class="form-group col-md-12">
+									<label for="message">Response <span class="required"></span></label>
+									<textarea class="form-control" name="message" placeholder="Write your response ..."></textarea>
+								</div>
+								<div class="form-group col-md-12">
+									<button class="btn btn-primary">Send Response</button>
+								</div>
+							</form> --}}
+						</div>
                     @empty 
                         <p>কোন কমেন্ট পাওয়া যায়নি।</p>
                     @endforelse
@@ -245,7 +331,6 @@
                                 </button>
                               </div>
                             @endif
-
                                 <label for="message">Comment</label>
                                 <textarea class="form-control" name="comment" placeholder="Write your response ..."></textarea>
                             </div>
@@ -253,6 +338,8 @@
                                 <button type="submit" class="btn btn-primary">Comment</button>
                             </div>
                         </form>
+                        
+                       
                     @else 
                         <div class="border" style="padding:10px">
                             <p>You cannot comment without login.If have an account <a href="{{ route('visitor-login') }}"> Login here </a> or <a href="{{ route('visitor-register') }}"> Register here </a> .</p>
@@ -264,6 +351,7 @@
     </div>
 </section>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     
     const facebookBtn = document.getElementById('facebook-btn')
@@ -282,5 +370,13 @@
     linkedinBtn.setAttribute("href",`https://www.linkedin.com/shareArticle?url=${ postUrl }&title=${ postTitle }`)
 
 </script>
+{{-- <script>
+    $(document).ready(function(){
+      $("#reply-button").click(function(){
+        $("#reply-box").fadeToggle();
+      });
+    });
+</script> --}}
+
 
 @endsection

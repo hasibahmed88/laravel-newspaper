@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class VisitorController extends Controller
 {
+
+    // visitor Profile 
+    public function visitorProfile($id){
+        $visitor = Visitor::where('id',$id)->first();
+        return view('front.visitor.visitor-profile',compact('visitor'));
+    }
+
     // Visitor Register
     public function visitorRegister(){
         return view('front.visitor.visitor-register');
