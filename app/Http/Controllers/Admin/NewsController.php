@@ -28,7 +28,6 @@ class NewsController extends Controller
     {
         return view('admin.news.add-news',[
             'categories'    =>   Category::where('status',1)->get(),
-            'subcategories' =>  SubCategory::where('status',1)->get(),
         ]);
     }
 
@@ -66,6 +65,12 @@ class NewsController extends Controller
         News::newNewsInfo($request);
         return back()->with('message','News added successfull!');
 
+    }
+
+    // Get subcategory by ajax
+    public function getSubcategory($id){
+        $subcategories = SubCategory::where('category_id',$id)->get();
+        return json_encode($subcategories);
     }
 
     // === View News === ||

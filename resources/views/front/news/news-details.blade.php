@@ -128,6 +128,7 @@
                         <p>{!! $news->news_long_description !!}</p>
                     </div>
                     <footer>
+<<<<<<< HEAD
                         <div class="col">
                             {{-- <a href="#" class="love">Watch:  <div>{{ $news->total_view }}</div></a> --}}
                             <p>Watch: <span class="text-info"><strong>{{ $news->total_view }}</strong></span></p>
@@ -136,6 +137,12 @@
                             {{-- <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1220</div></a> --}}
                             &nbsp;
                         </div>
+=======
+                        <div class="col"></div>
+                            <div class="col">
+                                <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1220</div></a>
+                            </div>
+>>>>>>> f7c4a08278f99be513ef94242f186da41ed4e31e
                     </footer>
                 </article>
                 <div class="sharing">
