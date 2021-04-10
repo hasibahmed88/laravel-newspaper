@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Front\Visitor;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class VisitorController extends Controller
 {
@@ -54,15 +55,25 @@ class VisitorController extends Controller
 
     // New visitor login
     public function newVisitorLogin(Request $request){
+        
         $visitor = Visitor::where('email', $request->email)->first();
         if($visitor){
             if (password_verify($request->password, $visitor->password)) {
                 $visitor->status = 1;
                 $visitor->save();
+
                 session()->put('visitor_id', $visitor->id);
                 session()->put('visitor_name', $visitor->visitor_name);
                 session()->put('visitor_email', $visitor->email);
 
+                if($request->has('rememberMe')){
+                    // Cookie::queue(Cookie::make('id', $visitor->id, 43200 * 6));
+                    // Cookie::queue(Cookie::make('visitor_name', $visitor->visitor_name, 43200 * 6));
+                    // Cookie::queue(Cookie::make('visitor_email', $visitor->email, 43200 * 6));
+                    Cookie::queue('id', $visitor->visitor_name, 43200 * 6);
+                    Cookie::queue('visitor_name', $visitor->visitor_name, 43200 * 6);
+                    Cookie::queue('visitor_email', $visitor->visitor_name, 43200 * 6);
+                }
                 return redirect('/');
 
             } else {
@@ -76,12 +87,20 @@ class VisitorController extends Controller
 
     // Visitor logout
     public function visitorLogout($ip){
+        // Session 
         session()->forget('visitor_id');
         session()->forget('visitor_name');
         session()->forget('visitor_email');
+
+        // Cookie 
+        // Cookie::flush('visitor_name');
+        Cookie::queue(Cookie::forget('id'));
+        Cookie::queue(Cookie::forget('visitor_name'));
+        Cookie::queue(Cookie::forget('visitor_email'));
+
         $visitor = Visitor::where('ip', $ip)->first();
         $visitor->status = 0;
-        $visitor->save();   
+        $visitor->save();
         
         return redirect('/');
     }

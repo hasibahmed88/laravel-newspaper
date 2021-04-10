@@ -75,7 +75,7 @@
 							</form>								
 						</div>
 						<div class="col-md-3 col-sm-12 text-right">
-							@if(!Session::get('visitor_name'))
+							@if(!Session::get('visitor_name') || !Cookie::get('visitor_name'))
 							<ul class="nav-icons">
 							
 							<li><a href="{{ route('visitor-register') }}"><i class="ion-person-add"></i><div>Register</div></a></li>
@@ -85,7 +85,8 @@
 							@else 
 							<div class="dropdown">
 								<button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									{{ Session::get('visitor_name') }} &nbsp; <i class="ion-ios-arrow-right"></i>
+									{{-- {{ Session::get('visitor_name') }} &nbsp; <i class="ion-ios-arrow-right"></i> --}}
+									{{ Cookie::get('visitor_name') }} &nbsp; <i class="ion-ios-arrow-right"></i>
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<a href="{{ route('visitor-profile',['id'=>Session::get('visitor_id')]) }}" class="dropdown-item"><i class="icon ion-person"></i> &nbsp; My Account</a>

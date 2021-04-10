@@ -32,6 +32,9 @@ Login
                             </label>
                             <input type="password" name="password" class="form-control">
                         </div>
+                        <div class="form-group text-left">
+                            <input type="checkbox" name="rememberMe" id="remember"> &nbsp;&nbsp; <label for="remember">Remember me</label>
+                        </div>
                         <div class="form-group text-right">
                             <button type="submit" id="login-btn" class="btn btn-primary btn-block">Login</button>
                         </div>

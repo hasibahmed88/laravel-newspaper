@@ -13,7 +13,6 @@ Register
                     <h4>Register</h4>
                 <form action="{{ route('new-visitor') }}" method="POST">
                     @csrf
-
                         <input type="hidden" name="">
                         <div class="form-group">
                             <label>Name</label>
