@@ -13,7 +13,11 @@ return date
 
 function banglaDay(d){
     let day = ''
+    
     switch (d) {
+        case 0:
+            day = 'রবিবার'
+            break;
         case 1:
             day = 'সোমবার'
             break;
@@ -32,10 +36,6 @@ function banglaDay(d){
         case 6:
             day = 'শনিবার'
             break;
-        case 7:
-            day = 'রবিবার'
-            break;
-    
         default:
             break;
     }

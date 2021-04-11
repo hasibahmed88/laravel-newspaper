@@ -67,12 +67,9 @@ class VisitorController extends Controller
                 session()->put('visitor_email', $visitor->email);
 
                 if($request->has('rememberMe')){
-                    // Cookie::queue(Cookie::make('id', $visitor->id, 43200 * 6));
-                    // Cookie::queue(Cookie::make('visitor_name', $visitor->visitor_name, 43200 * 6));
-                    // Cookie::queue(Cookie::make('visitor_email', $visitor->email, 43200 * 6));
-                    Cookie::queue('id', $visitor->visitor_name, 43200 * 6);
-                    Cookie::queue('visitor_name', $visitor->visitor_name, 43200 * 6);
-                    Cookie::queue('visitor_email', $visitor->visitor_name, 43200 * 6);
+                    Cookie::queue('ID', $visitor->id, 43200 * 6);
+                    Cookie::queue('VISITOR_NAME', $visitor->visitor_name, 43200 * 6);
+                    Cookie::queue('VISITOR_EMAIL', $visitor->email, 43200 * 6);
                 }
                 return redirect('/');
 
@@ -94,9 +91,9 @@ class VisitorController extends Controller
 
         // Cookie 
         // Cookie::flush('visitor_name');
-        Cookie::queue(Cookie::forget('id'));
-        Cookie::queue(Cookie::forget('visitor_name'));
-        Cookie::queue(Cookie::forget('visitor_email'));
+        Cookie::queue(Cookie::forget('ID'));
+        Cookie::queue(Cookie::forget('VISITOR_NAME'));
+        Cookie::queue(Cookie::forget('VISITOR_EMAIL'));
 
         $visitor = Visitor::where('ip', $ip)->first();
         $visitor->status = 0;
